@@ -44,17 +44,17 @@ useEffect(() => {
 const displayNovels= () => {
   
     return novelArray.map((novel) => (
-      <Grid item md={3}>
+      <Grid item md={3} className="pb-2">
         <Card style={{height:'500px'}}>
           <CardMedia
             component="img"
-            height="300"
+            height="320"
             image={url + "/" + novel.thumbnail}
             alt={novel.name}
           />
 
           <CardContent>
-            <p className="p-title h2 text-center">{novel.title}</p>
+            <p className="p-title h5 text-center">{novel.title}</p>
             <p className="text-muted">{novel.variant}</p>
             <p className="h4 mt-4">₹ {novel.price}</p>
             <Button className="" variant="outlined" onClick={e => navigate('/main/noveldetail/'+novel._id)  }>View More</Button>   

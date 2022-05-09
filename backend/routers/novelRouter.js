@@ -63,4 +63,18 @@ Model.findByIdAndDelete(id).then((data) => {
 
 });
 
+router.put('/update/:id',(req,res)=>{
+
+  const id=req.params.id;
+  Model.findByIdAndUpdate(id,req.body).then((data) => {
+    console.log("novel data updated successfully..");
+    res.status(200).json(data);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).json(err);
+  });
+
+});
+
 module.exports={router};

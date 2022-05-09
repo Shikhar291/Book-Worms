@@ -5,9 +5,12 @@ import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
 
 import Swal from "sweetalert2";
+import UpdateNovel from "./updateNovel";
 
 const ManageNovel = () => {
   const [novelArray, setNovelArray] = useState([]);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [updateFormData, setUpdateFormData] = useState({});
 
   const url = app_config.api_url;
 
@@ -33,8 +36,10 @@ const ManageNovel = () => {
       });
   };
 
-  const updateNovel=(id)=>{
-      
+  const displayUpdateNovel=()=>{
+
+    if(showUpdateForm)
+    return <UpdateNovel updateFormData={updateFormData}/>
   }
 
   const displayNovel = () => {
@@ -58,7 +63,10 @@ const ManageNovel = () => {
           <Button
             variant="contained"
             color="error"
-            onClick={(e) => updateNovel(product._id)}
+            onClick={(e) =>{
+            setShowUpdateForm(true)
+            setUpdateFormData(product)}
+            }
           >
             <i class="fa fa-refresh" aria-hidden="true"></i>
           </Button>
@@ -74,7 +82,7 @@ const ManageNovel = () => {
   return (
     <div className="container">
 
-      <table className="table table-striped table-dark">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th className="w-5">S.No</th>
@@ -87,6 +95,7 @@ const ManageNovel = () => {
         </thead>
         <tbody>{displayNovel()}</tbody>
       </table>
+      {displayUpdateNovel()}
     </div>
   );
 };

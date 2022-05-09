@@ -22,6 +22,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddNovel = () => {
+
+
   const novelForm = {
     title: "",
     description: "",
@@ -88,7 +90,7 @@ const AddNovel = () => {
       {/* <Paper elevation={3} variant="outlined"> */}
       <Card>
         {/* <Container style={{ height: "120vh" }}> */}
-        <h1 class="text-center ">Add Novel form</h1>
+        <h1 className="text-center ">Add Novel form</h1>
 
         <CardContent>
           <Formik initialValues={novelForm} onSubmit={novelSubmit}>
@@ -162,10 +164,12 @@ const AddNovel = () => {
                   id="rentPrice"
                 />
 
+                
+
                 <FormControlLabel
                   control={
                     <Checkbox
-                      className="w-50  form-control mx-auto"
+                      className="w-50 mx-auto"
                       type="checkbox"
                       checked={values.exchangeble}
                       onChange={handleChange}
@@ -216,6 +220,7 @@ const AddNovel = () => {
                 >
                   Add Novel
                 </Button>
+                
               </form>
             )}
           </Formik>

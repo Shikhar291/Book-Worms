@@ -9,6 +9,9 @@ import AddNovel from './components/user/addNovel';
 import BrowseNovel from './components/main/browseNovels';
 import NovelDetail from './components/main/novelDetails';
 import ManageNovel from './components/user/manageNovel';
+import Chat from './components/user/chat';
+import Signup from './components/user/signup';
+import Login from './components/user/login';
 
 
 function App() {
@@ -28,8 +31,11 @@ function App() {
         </Route>
 
         <Route element={<User></User>} path="user">
+          <Route element={<Chat></Chat>} path="chat"></Route>
         <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
         <Route element={<ManageNovel></ManageNovel>} path="managenovel"></Route>
+        <Route element={<Login></Login>} path="login"></Route>
+        <Route element={<Signup/>} path="signup"></Route>
         </Route>
 
       </Routes>
