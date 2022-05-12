@@ -8,21 +8,18 @@ import {
   Container,
   TextField,
 } from "@mui/material";
-
 import Swal from "sweetalert2";
-
 import { FormControlLabel } from "@mui/material";
-
 import app_config from "../../config";
-
 import Checkbox from "@mui/material/Checkbox";
-
 import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddNovel = () => {
 
+
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")));
 
   const novelForm = {
     title: "",
@@ -34,6 +31,7 @@ const AddNovel = () => {
     rentPrice: 0,
     rentable: false,
     exchangeble: false,
+    user:currentUser._id,
   };
 
 
@@ -95,7 +93,8 @@ const AddNovel = () => {
         <CardContent>
           <Formik initialValues={novelForm} onSubmit={novelSubmit}>
             {({ values, handleChange, handleSubmit }) => (
-              <form onSubmit={handleSubmit}>
+             
+             <form onSubmit={handleSubmit}>
                 <h5 className="text-center text-muted">Upload Thumbnail</h5>
                 <input
                   type="file"
@@ -198,6 +197,7 @@ const AddNovel = () => {
                   onChange={handleChange}
                   id="rentable"
                 /> */}
+
 
                 <FormControlLabel
                   control={

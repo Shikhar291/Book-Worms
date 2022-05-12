@@ -15,6 +15,7 @@ const ManageNovel = () => {
   const url = app_config.api_url;
 
   const fetchData = () => {
+    
     fetch(url + "/novel/getall")
       .then((res) => res.json())
       .then((data) => {

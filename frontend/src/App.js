@@ -12,6 +12,8 @@ import ManageNovel from './components/user/manageNovel';
 import Chat from './components/user/chat';
 import Signup from './components/user/signup';
 import Login from './components/user/login';
+import AddQuery from './components/user/addQuery';
+import BrowseQuery from './components/main/browseQuery';
 
 
 function App() {
@@ -26,12 +28,14 @@ function App() {
         </Route>
 
         <Route element={<Main></Main>} path="main">
+          <Route element={<BrowseQuery></BrowseQuery>} path="browsequery"></Route>
           <Route element={<BrowseNovel/>} path="browsenovel"></Route>
           <Route element={<NovelDetail></NovelDetail>} path="noveldetail/:id"></Route>
         </Route>
 
         <Route element={<User></User>} path="user">
-          <Route element={<Chat></Chat>} path="chat"></Route>
+        <Route element={<AddQuery></AddQuery>} path="addquery"></Route>
+        <Route element={<Chat></Chat>} path="chat"></Route>
         <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
         <Route element={<ManageNovel></ManageNovel>} path="managenovel"></Route>
         <Route element={<Login></Login>} path="login"></Route>

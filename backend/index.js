@@ -5,6 +5,7 @@ const cors=require('cors');
 const userRouter=require('./routers/userRouter').router;
 const novelRouter=require('./routers/novelRouter').router;
 const utilRouter=require('./routers/utils').router;
+const queryRouter=require('./routers/queryRouter').router;
 
 const { createServer } = require("http");
 const { Server } = require("socket.io");
@@ -53,10 +54,7 @@ app.use(express.json());
 app.use('/user',userRouter);
 app.use('/novel',novelRouter);
 app.use('/util',utilRouter);
-
-
-
-
+app.use('/query',queryRouter);
 
 
 app.get('/',(req,resp)=>{

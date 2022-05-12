@@ -12,6 +12,8 @@ import {
   CardMedia,
 } from "@mui/material";
 
+
+
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +24,11 @@ const BrowseNovel=()=>{
     const [novelArray,setNovelArray]=useState([]);
 
     const navigate = useNavigate();
+
+    const addQuery=()=>{
+
+
+    }
 
 
     const fetchData = () => {
@@ -71,7 +78,23 @@ return (
     <Grid container spacing={6}>
       {displayNovels()}
     </Grid>
+    
+    <footer className="text-center text-white " style={{ backgroundColor: '#0a4275' }}>
+    <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+        © 2020 Copyright:
+        
+        <div className="footer">
+          <Button variant="outlined" style = {{color:'black',backgroundColor:'orangered'}} onClick={e => navigate('/main/addQuery/')  }>
+            Ask Query
+          </Button>
+        </div>
+      </div>
+
+    </footer>
+
   </div>
+
+  
 );
 
 

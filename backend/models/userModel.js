@@ -12,5 +12,4 @@ const mySchema=new moongoose.Schema({
 
 
 const userModel=moongoose.model('users',mySchema);
-
 module.exports={userModel};
