@@ -1,15 +1,13 @@
 import React from "react" ;
 import {Outlet} from "react-router-dom";
+import Header from "../main/header";
 
 const User=()=>{
 
     return (
     
     <div>
-        <h1 className="text-center"></h1>
         <Outlet/>
-
-
     </div>
     
     );

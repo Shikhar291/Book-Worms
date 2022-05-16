@@ -76,7 +76,7 @@ return (
   <div className="container">
     <Header></Header>
 
-    <Grid container spacing={6}>
+    <Grid container spacing={6} className="mt-0">
       {displayNovels()}
     </Grid>
     
