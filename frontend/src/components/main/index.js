@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import SearchAppBar from "./header";
-
+import Header from "./header";
 const Main = () => {
   return (
     <div>
-      <SearchAppBar />
+      <Header></Header>
       <Outlet />
     </div>
   );

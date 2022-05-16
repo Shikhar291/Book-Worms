@@ -10,7 +10,7 @@ import BrowseNovel from "./components/main/browseNovels";
 import NovelDetail from "./components/main/novelDetails";
 import ManageNovel from "./components/user/manageNovel";
 import Chat from "./components/user/chat";
-import Signup from "./components/user/signup";
+import Signup from "./components/main/signup";
 import AddQuery from "./components/user/addQuery";
 import BrowseQuery from "./components/main/browseQuery";
 import Login from "./components/main/login";

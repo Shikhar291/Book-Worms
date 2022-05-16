@@ -79,12 +79,22 @@ const Login = () => {
 
   return (
     <div>
+      
       <Formik initialValues={loginForm} onSubmit={loginSubmit}>
         {({ values, handleChange, handleSubmit }) => (
           <div className="signup-img">
             <div className="row align-items-center h-100">
               <div className="col-lg-3 col-md-4 col-sm-6 col-11 mx-auto">
-                <Card className="card1">
+                <Card className="card1"
+                sx={{ 
+                  maxWidth: 400,
+                  bgcolor:'#da8b5252'
+                  }} 
+                  style={{
+                    borderStyle:"none",
+                    borderRadius:0,
+                  }}
+                >
                   <CardContent>
                     <Box>
                       <h2 className="text-center">LOGIN</h2>
@@ -93,7 +103,7 @@ const Login = () => {
                       Don't have an account?{" "}
                       <Button
                         variant="text"
-                        color="inherit"
+                        color="primary"
                         onClick={(e) => navigate("/main/signup")}
                       >
                         Sign up
@@ -157,6 +167,7 @@ const Login = () => {
                           variant="outlined"
                           color="primary"
                           endIcon={<FacebookOutlinedIcon />}
+                          className="text-white"
                         >
                           Facebook
                         </Button>
