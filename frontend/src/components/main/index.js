@@ -1,17 +1,14 @@
-import React from "react" ;
+import React from "react";
 import { Outlet } from "react-router-dom";
+import SearchAppBar from "./header";
 
-const Main=()=>{
-
-    return (
+const Main = () => {
+  return (
     <div>
-    
-     <Outlet/>
+      <SearchAppBar />
+      <Outlet />
     </div>
-    
-    );
-
+  );
 };
 
 export default Main;
-

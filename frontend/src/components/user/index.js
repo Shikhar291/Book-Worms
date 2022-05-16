@@ -1,19 +1,12 @@
-import React from "react" ;
-import {Outlet} from "react-router-dom";
+import React from "react";
+import { Outlet } from "react-router-dom";
 
-const User=()=>{
-
-    return (
-    
+const User = () => {
+  return (
     <div>
-        <h1 className="text-center"></h1>
-        <Outlet/>
-
-
+      <Outlet />
     </div>
-    
-    );
+  );
 };
 
 export default User;
-
