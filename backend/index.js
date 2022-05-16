@@ -12,6 +12,8 @@ const { Server } = require("socket.io");
 
 const httpServer = createServer(app);
 
+const connectedUsers = {};
+
 const io = new Server(httpServer, {
     cors: { origin: ["http://localhost:3000"] },
   });
@@ -19,7 +21,14 @@ const io = new Server(httpServer, {
 
   io.on("connection", (socket) => {
     console.log("client connected");
-  
+    
+    io.on('add', ((userid) => {
+      connectedUsers[userid] = socket.id;
+    }))
+
+    io.on('checkuser', (userid) => {
+      io.emit('isonline', connectedUsers[userid] ? {status: online, socketid : connectedUsers[userid]} : {status: offline});
+    } )
     // on function is used for receieving the event
     socket.on("sendmsg", (data) => {
       console.log(data);

@@ -61,6 +61,19 @@ font-family: 'EB Garamond', serif;
   float: right;
 }
 
+.overlay {
+  background-color: #f3f0f048;
+/* opacity: 0.5; */
+
+}
+
+.signup-img{
+  height:100vh;
+  background: url(https://wallpaperaccess.com/full/253342.jpg);
+  background-size: cover;
+  padding:7rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

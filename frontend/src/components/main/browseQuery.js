@@ -14,7 +14,12 @@ import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
 
 const BrowseQuery = () => {
+
 const url = app_config.api_url;
+
+const [currentUser, setCurrentUser] = useState(
+  JSON.parse(sessionStorage.getItem("user"))
+);
 
   const [queryArray, setQueryArray] = useState([]);
   const navigate = useNavigate();
@@ -42,7 +47,7 @@ const url = app_config.api_url;
             <Button
               className=""
               variant="outlined"
-              onClick={(e) => navigate("")}
+              onClick={(e) => navigate("/user/chat/"+currentUser._id)}
             >
               Contact
             </Button>

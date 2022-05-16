@@ -18,7 +18,7 @@ router.post('/addquery',(req,res)=>{
 
 router.get('/getall',(req,res)=>{
 
-    Model.find({})
+    Model.find({}).populate("user")
       .then((data) => {
         console.log("product data fetched successfully..");
         res.status(200).json(data);

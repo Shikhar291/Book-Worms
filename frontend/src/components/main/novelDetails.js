@@ -16,7 +16,10 @@ import {
   CardMedia,
 } from "@mui/material";
 
+
 const NovelDetail = () => {
+
+  
   const [novel, setNovelDetail] = useState({});
 
   const [rentable, setRentable] = useState("No");

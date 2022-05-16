@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
 
+
 import Box from "@mui/material/Box";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
@@ -23,7 +24,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-
+import { Opacity } from "@mui/icons-material";
 
 const Login = () => {
   const url = app_config.api_url;
@@ -31,7 +32,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const loginForm = {
-    email:"",
+    email: "",
     password: "",
   };
 
@@ -45,7 +46,6 @@ const Login = () => {
         "Content-Type": "application/json",
       },
     }).then((res) => {
-
       console.log(res.status);
       if (res.status === 200) {
         res.json().then((data) => {
@@ -78,53 +78,46 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-img h-100">
+    <div>
       <Formik initialValues={loginForm} onSubmit={loginSubmit}>
         {({ values, handleChange, handleSubmit }) => (
-          <div className="h-100">
-          {/* <Container> */}
-            {/* <Card */}
-              {/* style={{ borderRadius: 10, boxShadow: "1px 4px 4px 4px black" }} */}
-              {/* sx={{ mt: 8, mb: 10 }} */}
-            {/* > */}
-              {/* <Box style={{ display: "flex", float: "left" }}>
-                <img
-                  // src="https://images.unsplash.com/photo-1568667256549-094345857637?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bGlicmFyeSUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  alt="cartoon"
-                ></img>
-              </Box> */}
-              <Box
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  borderRadius: 5,
-                  boxShadow: "2px 2px 2px 2px #fce6ff",
-                
-                }}
-                sx={{ ml: 3, mr: 2, mt: 2 }}
+          <div className="signup-img">
+            <Card sx={{ 
+              maxWidth: 400,
+              m:'auto',
+              bgcolor:'#f3f0f048',
+              // Opacity:0.2
+              }} 
+              style={{
+                borderStyle:"none",
+                borderRadius:0,
+              }}
               >
+                
 
-                <Card
-                className="opacity-2"
-               style={{ borderRadius: 10,width:500 ,height:500}} 
-              sx={{ mt: 8, mb: 10 }} 
-            >
-                <CardContent>
-                  <Box sx={{ mt: 2, ml: 13 }}>
-                    <h5>LOGIN</h5>
+              <CardContent>
+               
+              <Box>
+                    <h2 style={{
+                      display: "flex",
+                      justifyContent: "center"
+                      }}
+                      >LOGIN</h2>
                   </Box>
                   <p>
-                    Doesn't have an account yet?{" "}
+                    Don't have an account?{" "}
                     <Button
                       variant="text"
-                      onClick={(e) => navigate("/user/signup")}
+                      color="inherit"
+                      onClick={(e) => navigate("/main/signup")}
                     >
-                      Sign Up
+                      Sign up
                     </Button>
                   </p>
+
                   <form onSubmit={handleSubmit}>
                     <div>
-                      <h6>Email Address</h6>
+                      <h6 >Email Address</h6>
                       <TextField
                         className="w-100 "
                         variant="standard"
@@ -138,6 +131,7 @@ const Login = () => {
                     <div>
                       <h6>Password</h6>
                       <TextField
+                      style={{borderColor:'blue'}}
                         className="w-100 "
                         variant="standard"
                         type="password"
@@ -150,25 +144,29 @@ const Login = () => {
                       <FormControlLabel
                         control={<Checkbox />}
                         label="Remember me"
+                        
                       />
                     </FormGroup>
-                    <Box sx={{ ml: 12 }}>
+
+                    <Box sx={{ marginLeft: 18 }}>
                       <Button
                         type="submit"
                         variant="contained"
-                        className="mt-2 mb-2 "
+                        className="mt-2 mb-2 text-white"
                         color="secondary"
                         size="large"
+
                       >
                         Login
                       </Button>
                     </Box>
                     <hr></hr>
-                    <Stack direction="row" spacing={4} sx={{ mt: 3 }}>
+                    <Stack direction="row" spacing={4} sx={{ mt: 3, ml: 7 }}>
                       <Button
                         variant="outlined"
                         color="error"
                         startIcon={<GoogleIcon />}
+                        className="text-white"
                       >
                         Google
                       </Button>
@@ -181,11 +179,11 @@ const Login = () => {
                       </Button>
                     </Stack>
                   </form>
-                </CardContent>
-                </Card>
-              </Box>
-            
-          {/* </Container> */}
+              </CardContent>
+            </Card>
+            {/* </Box> */}
+
+            {/* </Container> */}
           </div>
         )}
       </Formik>

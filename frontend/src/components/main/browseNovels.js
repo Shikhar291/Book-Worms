@@ -11,11 +11,9 @@ import {
   TextField,
   CardMedia,
 } from "@mui/material";
-
-
-
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
+import Header from "./header";
 
 const BrowseNovel=()=>{
 
@@ -73,8 +71,11 @@ const displayNovels= () => {
 };
 
 return (
+ 
+
   <div className="container">
-    <h1 className="text-center">Novel List</h1>
+    <Header></Header>
+
     <Grid container spacing={6}>
       {displayNovels()}
     </Grid>
@@ -84,7 +85,7 @@ return (
         © 2020 Copyright:
         
         <div className="footer">
-          <Button variant="outlined" style = {{color:'black',backgroundColor:'orangered'}} onClick={e => navigate('/main/addQuery/')  }>
+          <Button variant="outlined" style = {{color:'black',backgroundColor:'orangered'}} onClick={e => navigate('/user/addQuery/')  }>
             Ask Query
           </Button>
         </div>

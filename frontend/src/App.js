@@ -35,7 +35,7 @@ function App() {
 
         <Route element={<User></User>} path="user">
         <Route element={<AddQuery></AddQuery>} path="addquery"></Route>
-        <Route element={<Chat></Chat>} path="chat"></Route>
+        <Route element={<Chat></Chat>} path="chat/:userid"></Route>
         <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
         <Route element={<ManageNovel></ManageNovel>} path="managenovel"></Route>
         <Route element={<Login></Login>} path="login"></Route>
