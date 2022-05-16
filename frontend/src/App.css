@@ -71,7 +71,7 @@ font-family: 'EB Garamond', serif;
   height:100vh;
   background: url(https://wallpaperaccess.com/full/253342.jpg);
   background-size: cover;
-  padding:7rem;
+  /* padding:7rem; */
 }
 
 @keyframes App-logo-spin {
