@@ -70,10 +70,9 @@ font-family: 'EB Garamond', serif;
 
 .signup-img{
 
-  height: 600px;
   background: url(https://wallpaperaccess.com/full/253342.jpg);
   background-size: cover;
-  /* padding:7rem; */
+  padding-top:7rem;
 }
 
 @keyframes App-logo-spin {

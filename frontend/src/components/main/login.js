@@ -25,7 +25,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { Opacity } from "@mui/icons-material";
 import "./login.css";
-import Header from './header';
+import Header from "./header";
 
 const Login = () => {
   const url = app_config.api_url;
@@ -79,21 +79,21 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="signup-img" style={{ height: "90vh" }}>
       <Formik initialValues={loginForm} onSubmit={loginSubmit}>
         {({ values, handleChange, handleSubmit }) => (
-          <div className="signup-img">
+          <div className="">
             <div className="row align-items-center h-100">
               <div className="col-lg-3 col-md-4 col-sm-6 col-11 mx-auto">
-                <Card className="card1"
-                sx={{ 
-                  maxWidth: 400,
-                  bgcolor:'#ffffff66'
-
-                  }} 
+                <Card
+                  className="card1"
+                  sx={{
+                    maxWidth: 400,
+                    bgcolor: "#ffffff66",
+                  }}
                   style={{
-                    borderStyle:"none",
-                    borderRadius:0,
+                    borderStyle: "none",
+                    borderRadius: 0,
                   }}
                 >
                   <CardContent>
