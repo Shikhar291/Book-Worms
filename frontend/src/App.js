@@ -14,6 +14,8 @@ import Signup from "./components/main/signup";
 import AddQuery from "./components/user/addQuery";
 import BrowseQuery from "./components/main/browseQuery";
 import Login from "./components/main/login";
+import BuyNovel from "./components/main/buyNovel";
+import RentNovel from "./components/main/rentNovel";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           ></Route>
           <Route element={<BrowseNovel />} path="browsenovel"></Route>
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
+          <Route element={<BuyNovel/>} path="buy/:id" />
+          <Route element={<RentNovel/>} path="rent/:id" />
           <Route element={<Login />} path="login"></Route>
           <Route element={<Signup />} path="signup"></Route>
         </Route>

@@ -20,6 +20,7 @@ const Chat = () => {
     // { text: "kal pata chalega jab exam denge 😎😎", sent: true },
     // { text: "bye bye Good Night!!", sent: true },
   ]);
+  
 
   useEffect(() => {
     socket.connect();
