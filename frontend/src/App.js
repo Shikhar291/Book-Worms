@@ -16,8 +16,12 @@ import BrowseQuery from "./components/main/browseQuery";
 import Login from "./components/main/login";
 import BuyNovel from "./components/main/buyNovel";
 import RentNovel from "./components/main/rentNovel";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
+  const stripe = loadStripe("pk_test_Vmvhpm2TASsGcgF4RcyQfkF000KwucQJR1");
+
   return (
     <BrowserRouter>
       <Routes>
@@ -34,8 +38,15 @@ function App() {
           ></Route>
           <Route element={<BrowseNovel />} path="browsenovel"></Route>
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
-          <Route element={<BuyNovel/>} path="buy" />
-          <Route element={<RentNovel/>} path="rent" />
+          <Route
+            element={
+              <Elements stripe={stripe}>
+                <BuyNovel />
+              </Elements>
+            }
+            path="buy"
+          />
+          <Route element={<RentNovel />} path="rent" />
           <Route element={<Login />} path="login"></Route>
           <Route element={<Signup />} path="signup"></Route>
         </Route>
