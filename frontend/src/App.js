@@ -34,8 +34,8 @@ function App() {
           ></Route>
           <Route element={<BrowseNovel />} path="browsenovel"></Route>
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
-          <Route element={<BuyNovel/>} path="buy/:id" />
-          <Route element={<RentNovel/>} path="rent/:id" />
+          <Route element={<BuyNovel/>} path="buy" />
+          <Route element={<RentNovel/>} path="rent" />
           <Route element={<Login />} path="login"></Route>
           <Route element={<Signup />} path="signup"></Route>
         </Route>

@@ -20,9 +20,11 @@ import Box from "@mui/material/Box";
 import { Navigate } from "react-router-dom";
 
 const NovelDetail = () => {
+
   const navigate = useNavigate();
 
   const [novel, setNovelDetail] = useState({});
+
 
   const [rentable, setRentable] = useState("No");
 
@@ -53,6 +55,19 @@ const NovelDetail = () => {
         }
       });
   };
+
+  
+  const buyNovel=()=>{
+    
+    sessionStorage.setItem("novel", JSON.stringify(novel));
+    navigate('/main/buy')
+  }
+
+  const rentNovel=()=>{
+    
+    sessionStorage.setItem("novel", JSON.stringify(novel));
+    navigate('/rent/buy');
+  }
 
   useEffect(() => {
     fetchData();
@@ -147,7 +162,7 @@ const NovelDetail = () => {
                 <Box sx={{mr:2}}>
                   <Button
                     variant="outlined"
-                    onClick={(e) => navigate("/main/rent/" + novel._id)}
+                    onClick={(e) => rentNovel()}
                     color="error"
                   >
                     Rent Now
@@ -158,7 +173,7 @@ const NovelDetail = () => {
                 <Box>
                   <Button
                     variant="outlined"
-                    onClick={(e) => navigate("/main/buy/" + novel._id)}
+                    onClick={(e) => buyNovel()}
                     color="error"
                   >
                     Buy Now
