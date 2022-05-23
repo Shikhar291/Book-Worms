@@ -18,6 +18,7 @@ import BuyNovel from "./components/main/buyNovel";
 import RentNovel from "./components/main/rentNovel";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Home from "./components/home";
 
 function App() {
   const stripe = loadStripe("pk_test_Vmvhpm2TASsGcgF4RcyQfkF000KwucQJR1");
@@ -27,7 +28,14 @@ function App() {
 
   return (
     <BrowserRouter>
+
       <Routes>
+
+        <Route element={<Home/>} path="/"></Route>
+
+
+
+
         <Route element={<Admin></Admin>} path="admin">
           <Route element={<AdminProfile></AdminProfile>} path="profile">
             {" "}

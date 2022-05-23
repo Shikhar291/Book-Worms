@@ -11,7 +11,6 @@ import { Formik } from "formik";
 import Swal from "sweetalert2";
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
-
 import Box from "@mui/material/Box";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
@@ -26,6 +25,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { Opacity } from "@mui/icons-material";
 import "./login.css";
 import Header from "./header";
+
 
 const Login = () => {
   const url = app_config.api_url;
@@ -56,7 +56,7 @@ const Login = () => {
           console.log(item_value);
 
           if (data.isAdmin) {
-            navigate("/admin/dashboard");
+            navigate("/admin");
             return;
           }
           navigate("/main/browsenovel");

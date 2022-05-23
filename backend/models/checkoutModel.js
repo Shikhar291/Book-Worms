@@ -1,5 +1,3 @@
-
-const { default: mongoose } = require('mongoose');
 const moongoose=require('../connection');
 
 const mySchema=new moongoose.Schema({

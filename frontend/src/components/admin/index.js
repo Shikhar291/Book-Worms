@@ -7,9 +7,9 @@ const Admin=()=>{
 
     const options=[
         {
-        name:'Profile',
+        name:'Queries',
         icon:<AccountCircle />,
-        link:'/admin/profile',
+        link:'/main/browsequery',
        },
        {
         name:'Profile',
