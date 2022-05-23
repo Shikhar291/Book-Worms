@@ -74,9 +74,11 @@ const BuyNovel = () => {
   };
 
   const checkoutForm = {
-    title: "",
-    author: "",
-
+    title: novel.title,
+    author: novel.author,
+    genre:novel.genre,
+    shippingAddress:"",
+    shippingStatus:"",
   };
 
   useEffect(() => {
@@ -147,12 +149,12 @@ const BuyNovel = () => {
                         <div className="md-form ">
                           <input
                             type="text"
-                            id="firstName"
+                            id="title"
                             className="form-control"
-                            value={values.firstName}
+                            value={values.title}
                           />
-                          <label for="firstName" className="">
-                            First name
+                          <label for="title" className="">
+                            Title
                           </label>
                         </div>
                       </div>
@@ -161,42 +163,29 @@ const BuyNovel = () => {
                         <div className="md-form">
                           <input
                             type="text"
-                            id="lastName"
+                            id="author"
                             className="form-control"
-                            value={values.lastName}
+                            value={values.author}
                           />
                           <label for="lastName" className="">
-                            Last name
+                            Author
                           </label>
                         </div>
                       </div>
                     </div>
 
-                    <div className="md-form input-group pl-0 mb-5">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text" id="basic-addon1">
-                          @
-                        </span>
-                      </div>
+                    
+                    <div className="md-form mb-5 mt-3">
                       <input
                         type="text"
-                        className="form-control py-0"
-                        placeholder="Username"
-                        aria-describedby="basic-addon1"
-                        value={values.username}
-                      />
-                    </div>
-
-                    <div className="md-form mb-5">
-                      <input
-                        type="text"
-                        id="email"
-                        value={values.email}
+                        id="genre"
+                        value={values.genre}
                         className="form-control"
                         placeholder="youremail@example.com"
                       />
+
                       <label for="email" className="">
-                        Email (optional)
+                        Genre
                       </label>
                     </div>
 
