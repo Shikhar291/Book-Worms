@@ -21,6 +21,9 @@ import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
   const stripe = loadStripe("pk_test_Vmvhpm2TASsGcgF4RcyQfkF000KwucQJR1");
+  const appearance = {
+    theme: "night",
+  };
 
   return (
     <BrowserRouter>
@@ -40,7 +43,7 @@ function App() {
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
           <Route
             element={
-              <Elements stripe={stripe}>
+              <Elements stripe={(stripe, appearance)}>
                 <BuyNovel />
               </Elements>
             }
