@@ -44,11 +44,15 @@ const CARD_OPTIONS = {
   },
 };
 
+const appearance = {
+  theme: "stripe",
+};
+
 const BuyNovel = () => {
   const url = app_config.api_url;
 
   const stripe = useStripe();
-  const elements = useElements();
+  const elements = useElements({ appearance });
 
   const checkoutSubmit = (values) => {
     console.log(values);
@@ -76,7 +80,6 @@ const BuyNovel = () => {
   const checkoutForm = {
     title: "",
     author: "",
-
   };
 
   useEffect(() => {
@@ -140,7 +143,6 @@ const BuyNovel = () => {
             <div className="row">
               <div className="col-md-8 mb-4">
                 <div className="card">
-
                   <form className="card-body" onSubmit={handleSubmit}>
                     <div className="row">
                       <div className="col-md-6 mb-2">
@@ -224,15 +226,12 @@ const BuyNovel = () => {
                       </label>
                     </div>
 
-                    
-                    
                     <hr className="mb-4" />
                   </form>
                 </div>
               </div>
 
               <div className="col-md-4 mb-4">
-                
                 <form onSubmit={payMoney}>
                   <div>
                     <CardElement className="card" options={CARD_OPTIONS} />

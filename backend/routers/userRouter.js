@@ -1,10 +1,9 @@
-const express=require('express');
-const router=express.Router();
-const Model=require('../models/userModel').userModel;
+const express = require("express");
+const router = express.Router();
+const Model = require("../models/userModel").userModel;
 
-router.post('/add',(req,res)=>{
-
-    new Model(req.body)
+router.post("/add", (req, res) => {
+  new Model(req.body)
     .save()
     .then((data) => {
       console.log("User data saved successfully..");
@@ -14,15 +13,13 @@ router.post('/add',(req,res)=>{
       console.error(err);
       res.status(500).json(err);
     });
-    
-
 });
 
-router.post('/verify',(req,res)=>{
+router.post("/verify", (req, res) => {
+  let formdata = req.body;
 
-let formdata=req.body;
-
-Model.findOne({ email: formdata.email }).then((data) => {
+  Model.findOne({ email: formdata.email })
+    .then((data) => {
       if (data) {
         console.log("data found");
         if (data.password === formdata.password) {
@@ -41,13 +38,18 @@ Model.findOne({ email: formdata.email }).then((data) => {
       console.error(err);
       res.status(500).json(err);
     });
-
-
 });
 
-router.get('/getall',(req,res)=>{
-
-    
+router.get("/getall", (req, res) => {
+  Model.find({})
+    .then((data) => {
+      console.log("User data saved successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
 });
 
-module.exports={router};
+module.exports = { router };

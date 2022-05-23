@@ -19,6 +19,8 @@ import RentNovel from "./components/main/rentNovel";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Home from "./components/home";
+import Authorisor from "./components/authenticator";
+import AdminAuthorisor from "./components/adminAuth";
 
 function App() {
   const stripe = loadStripe("pk_test_Vmvhpm2TASsGcgF4RcyQfkF000KwucQJR1");
@@ -28,15 +30,17 @@ function App() {
 
   return (
     <BrowserRouter>
-
       <Routes>
+        <Route element={<Home />} path="/"></Route>
 
-        <Route element={<Home/>} path="/"></Route>
-
-
-
-
-        <Route element={<Admin></Admin>} path="admin">
+        <Route
+          element={
+            <AdminAuthorisor>
+              <Admin />
+            </AdminAuthorisor>
+          }
+          path="admin"
+        >
           <Route element={<AdminProfile></AdminProfile>} path="profile">
             {" "}
           </Route>
@@ -51,9 +55,11 @@ function App() {
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
           <Route
             element={
-              <Elements stripe={(stripe, appearance)}>
-                <BuyNovel />
-              </Elements>
+              <Authorisor>
+                <Elements stripe={stripe}>
+                  <BuyNovel />
+                </Elements>
+              </Authorisor>
             }
             path="buy"
           />
@@ -62,7 +68,14 @@ function App() {
           <Route element={<Signup />} path="signup"></Route>
         </Route>
 
-        <Route element={<User></User>} path="user">
+        <Route
+          element={
+            <Authorisor>
+              <User />
+            </Authorisor>
+          }
+          path="user"
+        >
           <Route element={<AddQuery></AddQuery>} path="addquery"></Route>
           <Route element={<Chat></Chat>} path="chat/:userid"></Route>
           <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
