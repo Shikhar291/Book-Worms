@@ -74,6 +74,19 @@ font-family: 'EB Garamond', serif;
   background-size: cover;
   padding-top:7rem;
 }
+.home
+{
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient2.png');
+   background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center center;
+}
+
+.page-footer {
+  background-color: #9da4b1;
+}
+
+
 
 @keyframes App-logo-spin {
   from {

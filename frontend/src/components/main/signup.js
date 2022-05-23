@@ -101,7 +101,7 @@ const Signup = () => {
                     Have an existing account?{" "}
                     <Button
                       variant="text"
-                      onClick={(e) => navigate("/user/login")}
+                      onClick={(e) => navigate("/main/login")}
                     >
                       Log In
                     </Button>
