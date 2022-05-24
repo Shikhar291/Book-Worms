@@ -63,6 +63,8 @@ const BuyNovel = () => {
     JSON.parse(sessionStorage.getItem("user"))
   );
 
+  const [address, setAddress] = useState("");
+
   const [isPaymentLoading, setPaymentLoading] = useState(false);
   const [values, setValues] = useState({});
 
@@ -80,12 +82,17 @@ const BuyNovel = () => {
     shippingStatus: "Shipped",
   };
 
-  const checkoutSubmit = (values) => {
-    console.log(values);
+  const checkoutSubmit = () => {
+    // console.log(values);
 
     fetch(url + "/checkout/buy", {
       method: "POST",
-      body: JSON.stringify(values),
+      body: JSON.stringify({
+        novel: novel._id,
+        shippingAddress: address,
+        shippingStatus: "Shipped",
+        createdAt: new Date(),
+      }),
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => {
@@ -152,6 +159,7 @@ const BuyNovel = () => {
         console.log(paymentResult);
 
         // saveOrder();
+        checkoutSubmit();
       }
     }
   };
@@ -218,11 +226,10 @@ const BuyNovel = () => {
                       <div className="md-form mb-5">
                         <input
                           type="text"
-                          id="address"
                           className="form-control"
                           placeholder="1234 Main St"
-                          values={values.shippingAddress}
-                          onChange={handleChange}
+                          values={address}
+                          onChange={(e) => setAddress(e.target.value)}
                         />
                         <label for="address" className="">
                           Address

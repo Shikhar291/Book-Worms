@@ -23,22 +23,19 @@ import Authorisor from "./components/authenticator";
 import AdminAuthorisor from "./components/adminAuth";
 
 function App() {
+  const stripe = loadStripe(
+    "pk_test_51L1Wf4SG8drK0Wt5fTi5mmAwG39rkyndP4LsZdqBkKgOdoVfDPzkVt8OHKpq94LBqFxWmtLDQZqll91aHQRkk17500YOymPufa"
+  );
 
-  const stripe = loadStripe("pk_test_51L1Wf4SG8drK0Wt5fTi5mmAwG39rkyndP4LsZdqBkKgOdoVfDPzkVt8OHKpq94LBqFxWmtLDQZqll91aHQRkk17500YOymPufa");
-  
   const appearance = {
     theme: "night",
   };
-
-  
 
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Home />} path="/"></Route>
-
         <Route
-
           element={
             <AdminAuthorisor>
               <Admin />
@@ -49,7 +46,6 @@ function App() {
           <Route element={<AdminProfile></AdminProfile>} path="profile">
             {" "}
           </Route>
-        
         </Route>
 
         <Route element={<Main></Main>} path="main">
