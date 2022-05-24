@@ -18,6 +18,8 @@ import {
 
 import Box from "@mui/material/Box";
 import { Navigate } from "react-router-dom";
+import Header from './header';
+
 
 const NovelDetail = () => {
 
@@ -69,125 +71,64 @@ const NovelDetail = () => {
     navigate('/rent/buy');
   }
 
+  const dispalyrentprice = (rent) => {
+    if(!rent){
+      return <h6>Rent Price - Not Rentable</h6>
+    }
+    else{
+      return <h6>Rent Price - ₹{novel.rentprice}/month</h6>
+    }
+ }
+
+
+ const dispalyexchange = (excahnge) =>{
+   if(excahnge)
+     return <h6>Exchangable</h6>
+ }
+
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
-    <Grid
-      container
-      spacing={5}
-      justifyContent="flex-start"
-      alignItems="center"
-      className=""
+
+<div>
+    <Header></Header>
+    <Container maxWidth='md'
+    style={{
+      paddingTop:20
+    }}
     >
-      <Grid item md={4} xs>
-        <CardMedia
-          component="img"
-          image={url + "/" + novel.thumbnail}
-          alt={novel.title}
-        />
-      </Grid>
-
-      <Grid item md={8} xs>
-        <CardContent>
-          <Grid
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="flex-start"
-            spacing={2}
-          >
-            <Grid item>
-              <p className="h2 font-link">{novel.title}</p>
-            </Grid>
-
-            <Grid item>
-              <p className="h3  mb-2 font-link4">₹{novel.price}</p>
-            </Grid>
-
-            <Grid item>
-              <p className="h3 font-link2"> {novel.description}</p>
-            </Grid>
-            <Grid item>
-              <p className="h3 font-link4 ">Author: {novel.author}</p>
-            </Grid>
-
-            <Grid item>
-              <p className="h3 font-link4">Rent Price ₹{novel.rentPrice}</p>
-            </Grid>
-
-            <Grid item>
-              <p className="h3 font-link4">Genre :{novel.genre}</p>
-            </Grid>
-
-            <Grid item className="col-xs-1 col-md-12">
-
-              <Box style={{ display: "flex"}}>
-                
-                <Box>
-                  <p className={classname1}>
-                    Rentable:&nbsp; &nbsp;
-                    <Fab
-                      variant="extended"
-                      size="small"
-                      color="primary"
-                      aria-label="add"
-                    >
-                      <CheckIcon />
-                      Click
-                    </Fab>
-                  </p>
-                </Box>
-
-
-                <Box>
-                  <p className={classname2}>
-                    Exchangeble:
-                    <Fab
-                      variant="extended"
-                      size="small"
-                      color="primary"
-                      aria-label="add"
-                    >
-                      <CheckIcon />
-                      Click
-                    </Fab>
-                  </p>
-                </Box>
- </Box>
-
-                <Box style={{ display: "flex"  , float:'right'}}>
-                
-                <Box sx={{mr:2}}>
-                  <Button
-                    variant="outlined"
-                    onClick={(e) => rentNovel()}
-                    color="error"
-                  >
-                    Rent Now
-                  </Button>
-                </Box>
-                
-                
-                <Box>
-                  <Button
-                    variant="outlined"
-                    onClick={(e) => buyNovel()}
-                    color="error"
-                  >
-                    Buy Now
-                  </Button>
-                </Box>
-
-
-              
-              </Box>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Grid>
-    </Grid>
+    <div class="row">
+    <div class="col-md-6">
+     <Card>
+      <CardMedia
+       component="img"
+       image={url + "/" + novel.thumbnail}
+       alt={novel.title}>
+      </CardMedia>
+     </Card>
+    </div>
+    <div class="col-md-6">
+      <h3 style={{textTransform:"uppercase"}}>{novel.title}</h3>
+      <p>{novel.genre}</p>
+      <h6>Description</h6>
+      <hr className="mt-0 mb-1"></hr>
+      <p className="mt-0 mb-1">{novel.author}</p>
+      <p>{novel.description}</p>
+      <hr></hr>
+      <h6>Price - ₹{novel.price}</h6>
+      {dispalyrentprice(novel.rentable)}
+      {dispalyexchange(novel.exchangeble)}
+      <hr></hr>
+      <p>Uploaded by -<span className="h6">{novel.author}</span></p>
+      <Button variant="contained" color="inherit" className="w-100 mb-3" onClick={(e) => buyNovel()}>BUY NOW</Button>
+      <Button disabled={!novel.rentable} variant="contained" color="inherit" className="w-100 mb-3 " onClick={(e) => rentNovel()}>RENT NOW</Button>
+      <Button disabled={!novel.exchangeble} variant="contained" color="inherit" className="w-100 ">EXCHANGE</Button>
+    </div>
+    </div>
+    </Container>
+    </div>
   );
 };
 export default NovelDetail;

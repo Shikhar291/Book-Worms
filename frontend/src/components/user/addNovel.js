@@ -15,11 +15,12 @@ import Checkbox from "@mui/material/Checkbox";
 import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from '../main/header';
 
 const AddNovel = () => {
-
-
-  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")));
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
 
   const novelForm = {
     title: "",
@@ -31,14 +32,13 @@ const AddNovel = () => {
     rentPrice: 0,
     rentable: false,
     exchangeble: false,
-    user:currentUser._id,
+    user: currentUser._id,
   };
 
 
   const navigate = useNavigate();
 
   const url = app_config.api_url;
-
 
   const [thumbnail, setThumbnail] = useState("");
 
@@ -61,8 +61,7 @@ const AddNovel = () => {
           title: "Novel added successfully!",
         });
       }
-      navigate('/main/browsenovel/');
-
+      navigate("/main/browsenovel/");
     });
   };
 
@@ -85,148 +84,190 @@ const AddNovel = () => {
 
   return (
     <div>
+        
+          
       {/* <Paper elevation={3} variant="outlined"> */}
-      <Card>
-        {/* <Container style={{ height: "120vh" }}> */}
-        <h1 className="text-center ">Add Novel form</h1>
-
-        <CardContent>
-          <Formik initialValues={novelForm} onSubmit={novelSubmit}>
-            {({ values, handleChange, handleSubmit }) => (
-             
-             <form onSubmit={handleSubmit}>
-                <h5 className="text-center text-muted">Upload Thumbnail</h5>
-                <input
-                  type="file"
-                  className="w-50 form-control mx-auto"
-                  onChange={uploadThumbnail}
-                  placeholder="thumbnail"
-                />
-
-                <input
-                  className="w-50 mt-3 form-control mx-auto"
-                  placeholder="Title"
-                  variant="outlined"
-                  onChange={handleChange}
-                  value={values.title}
-                  type="text"
-                  id="title"
-                />
-
-                <textarea
-                  className="w-50 mt-3 form-control mx-auto"
-                  placeholder="Description"
-                  variant="outlined"
-                  onChange={handleChange}
-                  value={values.description}
-                  id="description"
-                  type="text"
-                />
-
-                <input
-                  className="w-50 mt-3 form-control mx-auto"
-                  type="text"
-                  placeholder="Genre"
-                  variant="outlined"
-                  onChange={handleChange}
-                  value={values.genre}
-                  id="genre"
-                />
-
-                <input
-                  className="w-50 mt-3 form-control mx-auto"
-                  type="text"
-                  placeholder="Author"
-                  variant="outlined"
-                  onChange={handleChange}
-                  value={values.author}
-                  id="author"
-                />
-
-                <input
-                  className="w-50 mt-3 form-control mx-auto"
-                  type="text"
-                  placeholder="Price"
-                  variant="outlined"
-                  onChange={handleChange}
-                  value={values.price}
-                  id="price"
-                />
-
-                <input
-                  className="w-50 mt-3 form-control mx-auto"
-                  type="text"
-                  placeholder="Rent Price"
-                  variant="outlined"
-                  onChange={handleChange}
-                  value={values.rentPrice}
-                  id="rentPrice"
-                />
-
-                
-
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      className="w-50 mx-auto"
-                      type="checkbox"
-                      checked={values.exchangeble}
-                      onChange={handleChange}
-                      id="exchangeble"
-                    />
-                  }
-                  label="Exchangeble"
-                />
-
-                {/* <label>exchangeble</label>
-
-                <input
-                  className="mx-auto w-50"
-                  type="checkbox"
-                  checked={values.exchangeble}
-                  onChange={handleChange}
-                  id="exchangeble"
-                />
-
-                <label>Rele</label>
-
-                <input
-                  className="mx-auto w-50"
-                  type="checkbox"
-                  checked={values.rentable}
-                  onChange={handleChange}
-                  id="rentable"
-                /> */}
-
-
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      className="w-50  form-control"
-                      checked={values.rentable}
-                      onChange={handleChange}
-                      id="rentable"
-                    />
-                  }
-                  label="Rentable"
-                />
-
-                <Button
-                  
-                  type="submit"
-                  variant="contained"
-                  className="mt-3 my-auto"
-                  color="secondary"
+      <Formik initialValues={novelForm} onSubmit={novelSubmit}>
+        {({ values, handleChange, handleSubmit }) => (
+          <div className="addnovelbg" style={{height:'89vh'}}>
+            <div
+              className="row align-items-center h-100"
+              style={{ marginRight: "0" }}
+            >
+              <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-1 mx-auto">
+                <Card
+                  sx={{
+                    maxWidth: 400,
+                    maxHeight:600,
+                    height:475,
+                    bgcolor: "#ffffff66",
+                  }}
+                  style={{
+                    borderStyle: "none",
+                    borderRadius: 0,
+                  }}
                 >
-                  Add Novel
-                </Button>
-                
-              </form>
-            )}
-          </Formik>
-        </CardContent>
-        {/* </Container> */}
-      </Card>
+                  <CardContent>
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                        <div class="form-outline">
+                          <input
+                            className="form-control"
+                            placeholder="Title"
+                            variant="outlined"
+                            onChange={handleChange}
+                            value={values.title}
+                            type="text"
+                            id="title"
+                          />
+                          <label class="form-label" for="title">
+                            Title
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <div class="form-outline">
+                          <input
+                            className="form-control"
+                            type="text"
+                            placeholder="Author"
+                            variant="outlined"
+                            onChange={handleChange}
+                            value={values.author}
+                            id="author"
+                          />
+                          <label class="form-label" for="author">
+                            Author
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                        <div class="form-outline">
+                          <input
+                            className="form-control"
+                            type="text"
+                            placeholder="Price"
+                            variant="outlined"
+                            onChange={handleChange}
+                            value={values.price}
+                            id="price"
+                          />
+                          <label class="form-label" for="price">
+                            Purchase Price
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-2">
+                        <div class="form-outline">
+                          <input
+                            className="form-control"
+                            type="text"
+                            placeholder="Rent Price"
+                            variant="outlined"
+                            onChange={handleChange}
+                            value={values.rentPrice}
+                            id="rentPrice"
+                          />
+
+                          <label class="form-label" for="rentPrice">
+                            Rent Price
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-outline">
+                          <input
+                            className="form-control"
+                            placeholder="Genre"
+                            variant="outlined"
+                            onChange={handleChange}
+                            value={values.genre}
+                            type="text"
+                            id="genre"
+                          />
+                          <label class="form-label" for="title">
+                            Genre
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-outline">
+                          <input
+                            type="file"
+                            className="form-control"
+                            onChange={uploadThumbnail}
+                            placeholder="thumbnail"
+                          />
+                          <label class="form-label" for="title">
+                            Thumbnail
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-4 mb-2">
+                        <div class="form-outline">
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                className="w-50 mx-auto"
+                                type="checkbox"
+                                checked={values.exchangeble}
+                                onChange={handleChange}
+                                id="exchangeble"
+                              />
+                            }
+                            label="Exchangeble"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 mb-2">
+                        <div class="form-outline">
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                className="w-50  form-control"
+                                checked={values.rentable}
+                                onChange={handleChange}
+                                id="rentable"
+                              />
+                            }
+                            label="Rentable"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mt-2 mb-1">
+                        <div class="form-outline">
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            color="secondary"
+                          >
+                            Update Novel
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        )}
+      </Formik>
     </div>
   );
 };

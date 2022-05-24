@@ -63,6 +63,7 @@ Model.findByIdAndDelete(id).then((data) => {
 
 });
 
+
 router.put('/update/:id',(req,res)=>{
 
   const id=req.params.id;
@@ -75,6 +76,19 @@ router.put('/update/:id',(req,res)=>{
     res.status(500).json(err);
   });
 
+});
+
+
+router.get("/getbyuserid/:id", (req, res) => {
+  Model.find({user:req.params.id})
+    .then((data) => {
+      console.log("novel data fectched successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports={router};

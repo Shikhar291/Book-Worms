@@ -28,6 +28,7 @@ import Header from "./header";
 
 
 const Login = () => {
+  
   const url = app_config.api_url;
 
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ const Login = () => {
           console.log(item_value);
 
           if (data.isAdmin) {
+            sessionStorage.setItem("admin", JSON.stringify(data));
             navigate("/admin");
             return;
           }
@@ -79,17 +81,19 @@ const Login = () => {
   };
 
   return (
-    <div className="signup-img" style={{ height: "90vh" }}>
+    <div className="signup-img" style={{ height: "100vh"}}>
+      <Header />
       <Formik initialValues={loginForm} onSubmit={loginSubmit}>
         {({ values, handleChange, handleSubmit }) => (
-          <div className="">
-            <div className="row align-items-center h-100">
-              <div className="col-lg-3 col-md-4 col-sm-6 col-11 mx-auto">
+          <div className="" style={{width:'100%'}}>
+            <div className="row align-items-center h-100" style={{marginRight:'0'}}>
+              <div className="col-lg-3 col-md-4 col-sm-6 col-11 mt-5 mx-auto">
                 <Card
                   className="card1"
                   sx={{
                     maxWidth: 400,
                     bgcolor: "#ffffff66",
+
                   }}
                   style={{
                     borderStyle: "none",
@@ -155,7 +159,7 @@ const Login = () => {
                         </Button>
                       </Box>
                       <hr></hr>
-                      <Stack direction="row" spacing={4} sx={{ mt: 3, ml: 7 }}>
+                      <Stack direction="row" spacing={4} sx={{ mt: 3}}>
                         <Button
                           variant="outlined"
                           color="error"

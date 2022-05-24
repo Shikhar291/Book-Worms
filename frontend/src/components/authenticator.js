@@ -8,7 +8,7 @@ const Authorisor = ({ children }) => {
   );
   console.log(currentUser);
 
-  if (currentUser === null) {
+  if (currentUser===null) {
     Swal.fire({
       icon: "info",
       title: "OOops!!",

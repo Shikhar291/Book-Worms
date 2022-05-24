@@ -1,22 +1,21 @@
 import app_config from "../../config";
-
 import { Button } from "@mui/material";
-
 import { useState, useEffect } from "react";
-
 import Swal from "sweetalert2";
 import UpdateNovel from "./updateNovel";
 
 const ManageNovel = () => {
+
   const [novelArray, setNovelArray] = useState([]);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [updateFormData, setUpdateFormData] = useState({});
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("user")));
 
   const url = app_config.api_url;
 
   const fetchData = () => {
     
-    fetch(url + "/novel/getall")
+    fetch(url + "/novel/getbyuserid/"+currentUser._id)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -44,6 +43,7 @@ const ManageNovel = () => {
   }
 
   const displayNovel = () => {
+   
     return novelArray.map((product, i) => (
       <tr key={product._id}>
         <td className="w-5">{i + 1}</td>

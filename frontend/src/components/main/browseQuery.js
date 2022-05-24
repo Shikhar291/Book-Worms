@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
+import Header from './header';
 
 const BrowseQuery = () => {
 
@@ -38,29 +39,49 @@ const [currentUser, setCurrentUser] = useState(
   }, []);
 
   const displayQueries = () => {
-    return queryArray.map((query) => (
-      <Grid item md={3}>
-        <Card>
-          <CardContent>
-            <p className="p-title h4">Query Title: {query.title}</p>
-            <p>Description: {query.description}</p>
-            <Button
+    return queryArray.map((product,i) => (
+      
+      
+      <tr key={product._id}>
+        <td className="w-5">{i + 1}</td>
+        <td className="w-5">{product.title}</td>
+        <td className="w-10">{product.description}</td>
+        <td>
+        <Button
               className=""
               variant="outlined"
               onClick={(e) => navigate("/user/chat/"+currentUser._id)}
             >
               Contact
             </Button>
-          </CardContent>
-        </Card>
-      </Grid>
+        </td>
+
+      </tr>
     ));
   };
+      
+      
 
   return (
-    <div className="container">
-      <h1 className="text-center">Queries</h1>
-      {displayQueries()}
+    <div className="fluid">
+      <Header />
+      <h1 className="text-center">User Queries</h1>
+      <table className="table">
+      <thead>
+          <tr>
+            <th className="w-5">S.No</th>
+            <th className="w-5">Title</th>
+            <th className="w-10">description</th>
+            <th className="w-5">Chat</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {displayQueries()}
+        </tbody>
+      
+      </table>
     </div>
   );
 

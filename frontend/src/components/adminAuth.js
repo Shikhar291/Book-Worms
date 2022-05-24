@@ -8,8 +8,8 @@ const AdminAuthorisor = ({ children }) => {
   );
 
   console.log(currentUser);
-
-  if (!currentUser) {
+  
+  if (currentUser===null) {
     Swal.fire({
       icon: "info",
       title: "OOops!!",

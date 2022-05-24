@@ -8,6 +8,7 @@ const User=()=>{
     
     <div>
         <Header></Header>
+
         <Outlet/>
     </div>
     

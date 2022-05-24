@@ -72,8 +72,8 @@ font-family: 'EB Garamond', serif;
 
   background: url(https://wallpaperaccess.com/full/253342.jpg);
   background-size: cover;
-  padding-top:7rem;
 }
+
 .home
 {
   background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient2.png');
@@ -87,6 +87,25 @@ font-family: 'EB Garamond', serif;
 }
 
 
+.addnovelbg
+{
+  
+
+  background-image: url('https://stories.uiowa.edu/sites/stories.uiowa.edu/files/2021_12_14-books-at-dey-house-jatorner-0015.jpg');
+  background-repeat: no-repeat;
+   background-size: cover; 
+   background-position: center center;
+}
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #fa709a;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom right, rgba(250, 112, 154, 1), rgba(254, 225, 64, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom right, rgba(250, 112, 154, 1), rgba(254, 225, 64, 1))
+}
 
 @keyframes App-logo-spin {
   from {
