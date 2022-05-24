@@ -103,7 +103,7 @@ const Home=()=>{
       </div>
 
       <div className="col-md-4 mb-2 text-center text-md-left flex-center">
-        <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/iphone-portfolio1.png" alt="" className="z-depth-0" />
+        <img src="https://media.istockphoto.com/photos/black-hard-cover-book-isolated-on-white-background-copy-space-picture-id1269340773?b=1&k=20&m=1269340773&s=170667a&w=0&h=r1jgxoLnf3Cp4acu5QO6bQZ_RyhCc22lappzIg5EUPQ=" alt="" className="z-depth-0" />
       </div>
 
       <div className="col-md-4">

@@ -83,24 +83,23 @@ const AddNovel = () => {
   };
 
   return (
-    <div>
-        
-          
+    <div className="addnovelbg" style={{height:'89vh'}}>
       {/* <Paper elevation={3} variant="outlined"> */}
       <Formik initialValues={novelForm} onSubmit={novelSubmit}>
         {({ values, handleChange, handleSubmit }) => (
-          <div className="addnovelbg" style={{height:'89vh'}}>
+          <div>
             <div
-              className="row align-items-center h-100"
+              className="row  align-items-center h-100"
               style={{ marginRight: "0" }}
             >
-              <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-1 mx-auto">
+              <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-3 mx-auto">
                 <Card
                   sx={{
                     maxWidth: 400,
                     maxHeight:600,
                     height:475,
                     bgcolor: "#ffffff66",
+                    m:'auto'
                   }}
                   style={{
                     borderStyle: "none",
