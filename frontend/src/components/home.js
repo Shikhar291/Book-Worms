@@ -18,6 +18,7 @@ import Header from "./main/header";
 const Home = () => {
   return (
     <div>
+        <Header></Header>
       <header>
         <div className="view jarallax home" data-jarallax='{"speed": 0.2}'>
           <div className=" mask rgba-purple-slight">

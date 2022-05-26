@@ -83,7 +83,7 @@ const AddNovel = () => {
   };
 
   return (
-    <div className="addnovelbg" style={{height:'89vh'}}>
+    <div className="addnovelbg" style={{height: "calc(100vh - 70px)"}}>
       {/* <Paper elevation={3} variant="outlined"> */}
       <Formik initialValues={novelForm} onSubmit={novelSubmit}>
         {({ values, handleChange, handleSubmit }) => (
@@ -92,12 +92,12 @@ const AddNovel = () => {
               className="row  align-items-center h-100"
               style={{ marginRight: "0" }}
             >
-              <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-3 mx-auto">
+              <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-2 mx-auto">
                 <Card
                   sx={{
                     maxWidth: 400,
                     maxHeight:600,
-                    height:475,
+                    height:"calc(95vh - 80px)",
                     bgcolor: "#ffffff66",
                     m:'auto'
                   }}
@@ -107,9 +107,12 @@ const AddNovel = () => {
                   }}
                 >
                   <CardContent>
+                  <form onSubmit={handleSubmit}>
+
                     <div class="row">
                       <div class="col-md-6 mb-2">
                         <div class="form-outline">
+                          
                           <input
                             className="form-control"
                             placeholder="Title"
@@ -197,6 +200,24 @@ const AddNovel = () => {
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-outline">
+                          <input
+                            className="form-control"
+                            placeholder="Description"
+                            variant="outlined"
+                            onChange={handleChange}
+                            value={values.description}
+                            type="text"
+                            id="description"
+                          />
+                          <label class="form-label" for="title">
+                            Description
+                          </label>
+                        </div>
+                      </div>
+                    </div>
 
                     <div class="row">
                       <div class="col-md-12 mb-2">
@@ -255,11 +276,12 @@ const AddNovel = () => {
                             variant="contained"
                             color="secondary"
                           >
-                            Update Novel
+                            Add Novel
                           </Button>
                         </div>
                       </div>
                     </div>
+                    </form>
                   </CardContent>
                 </Card>
               </div>

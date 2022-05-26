@@ -64,139 +64,273 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div
+    className="signup-img full-height"
+    style={{ height: "calc(100vh - 70px)" }}
+    >
       <Formik initialValues={userForm} onSubmit={userSubmit}>
         {({ values, handleChange, handleSubmit }) => (
-          <Container style={{ width: 1000 }}>
-            <Card
-              style={{
-                borderRadius: 10,
-                boxShadow: "1px 1px 3px 2px black",
-              }}
-              sx={{ mt: 15, mb: 10 }}
+          <div>
+            <div
+              className="row  align-items-center h-100"
+              style={{ marginRight: "0" }}
             >
-              <Box
-                style={{ display: "flex", float: "left" }}
-                sx={{ mt: 5, mb: 5, ml: 5 }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGxpYnJhcnklMjBpbWFnZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&h=700&q=60"
-                  alt="cartoon"
-                ></img>
-              </Box>
-              <Box
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  borderRadius: 5,
-                  boxShadow: "2px 2px 2px 2px #fce6ff",
-                }}
-                sx={{ ml: 1, mr: 2, mt: 5 }}
-              >
-                <CardContent>
-                  <Box sx={{ ml: 10 }}>
-                    <h2>Sign Up</h2>
-                  </Box>
-                  <p>
-                    Have an existing account?{" "}
-                    <Button
-                      variant="text"
-                      onClick={(e) => navigate("/main/login")}
-                    >
-                      Log In
-                    </Button>
-                  </p>
-                  <form onSubmit={handleSubmit}>
-                    <div>
-                      <h6>First Name</h6>
-                      <TextField
-                        className="w-100"
-                        variant="standard"
-                        type="firstName"
-                        id="firstName"
-                        onChange={handleChange}
-                        value={values.firstName}
-                      />
-                    </div>
-                    <br></br>
-                    <div>
-                      <h6>Last Name</h6>
-                      <TextField
-                        className="w-100 "
-                        variant="standard"
-                        type="lastName"
-                        id="lastName"
-                        onChange={handleChange}
-                        value={values.lastName}
-                      />
-                    </div>
-                    <br></br>
-                    <div>
-                      <h6>User Name</h6>
-                      <TextField
-                        className="w-100 "
-                        variant="standard"
-                        type="username"
-                        id="username"
-                        onChange={handleChange}
-                        value={values.username}
-                      />
-                    </div>
-                    <br></br>
-                    <div>
-                      <h6>Email Address</h6>
-                      <TextField
-                        className="w-100 "
-                        variant="standard"
-                        type="email"
-                        id="email"
-                        onChange={handleChange}
-                        value={values.email}
-                      />
-                    </div>
-                    <br></br>
-                    <div>
-                      <h6>Password</h6>
-                      <TextField
-                        className="w-100 "
-                        variant="standard"
-                        type="password"
-                        id="password"
-                        onChange={handleChange}
-                        value={values.password}
-                      />
-                    </div>
-                    <FormGroup sx={{ mt: 1 }}>
-                      <FormControlLabel
-                        control={<Checkbox />}
-                        label="Remember me"
-                      />
-                    </FormGroup>
-                    <Box sx={{ ml: 12 }}>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        className="mt-2 mb-2 "
-                        color="secondary"
-                        size="large"
-                      >
-                        Sign Up
-                      </Button>
-                    </Box>
-                  </form>
-                  <hr></hr>
-                  <Stack direction="row" sx={{ ml: 7, color: "text.error" }}>
-                    <GoogleIcon />
-                    <FacebookOutlinedIcon />
-                    <TwitterIcon />
-                    <InstagramIcon />
-                    <LinkedInIcon />
-                    <GitHubIcon />
-                  </Stack>
-                </CardContent>
-              </Box>
-            </Card>
-          </Container>
+              <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-2 mx-auto">
+                <Card
+                  sx={{
+                    maxWidth: 400,
+                    maxHeight: 600,
+                    height: "calc(95vh - 80px)",
+                    bgcolor: "#ffffff66",
+                    m: "auto",
+                  }}
+                  style={{
+                    borderStyle: "none",
+                    borderRadius: 0,
+                  }}
+                >
+                  <CardContent>
+                    {" "}
+                    <form onSubmit={handleSubmit}>
+                      <div className="row">
+                        <div className="col-md-6 mb-4">
+                          <div className="form-outline">
+                            <input
+                              variant="standard"
+                              type="firstName"
+                              id="firstName"
+                              onChange={handleChange}
+                              value={values.firstName}
+                              className="form-control form-control-lg"
+                            />
+                            <label className="form-label" for="firstName">
+                              First Name
+                            </label>
+                          </div>
+                        </div>
+                        <div className="col-md-6 mb-4">
+                          <div className="form-outline">
+                            <input
+                              variant="standard"
+                              type="lastName"
+                              id="lastName"
+                              onChange={handleChange}
+                              value={values.lastName}
+                              className="form-control form-control-lg"
+                            />
+                            <label className="form-label" for="lastName">
+                              Last Name
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="row">
+                        <div className="col-md-12 mb-12">
+                          <div className="form-outline">
+                            <input
+                              variant="standard"
+                              type="username"
+                              id="username"
+                              onChange={handleChange}
+                              value={values.username}
+                              className="form-control form-control-lg"
+                            />
+                            <label className="form-label" for="userName">
+                              Username
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="row">
+                        <div className="col-md-12 mb-12 pb-2">
+                          <div className="form-outline">
+                            <input
+                              variant="standard"
+                              type="email"
+                              id="email"
+                              onChange={handleChange}
+                              value={values.email}
+                              className="form-control form-control-lg"
+                            />
+
+                            <label className="form-label" for="emailAddress">
+                              Email
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="row">
+                        <div className="col-md-12 mb-12 pb-2">
+                          <div className="form-outline">
+                            <input
+                              variant="standard"
+                              type="password"
+                              id="password"
+                              onChange={handleChange}
+                              value={values.password}
+                              className="form-control form-control-lg"
+                            />
+                            <label className="form-label" for="password">
+                              Password
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="row"></div>
+
+                      <div className="mt-2 pt-2">
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          className="mt-2 mb-2 "
+                          color="secondary"
+                          size="large"
+                        >
+                          Submit
+                        </Button>
+                      </div>
+                    </form>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+
+          // <Container style={{ width: 1000 }}>
+          //   <Card
+          //     style={{
+          //       borderRadius: 10,
+          //       boxShadow: "1px 1px 3px 2px black",
+          //     }}
+          //     sx={{ mt: 15, mb: 10 }}
+          //   >
+          //     <Box
+          //       style={{ display: "flex", float: "left" }}
+          //       sx={{ mt: 5, mb: 5, ml: 5 }}
+          //     >
+          //       <img
+          //         src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGxpYnJhcnklMjBpbWFnZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&h=700&q=60"
+          //         alt="cartoon"
+          //       ></img>
+          //     </Box>
+          //     <Box
+          //       style={{
+          //         display: "flex",
+          //         justifyContent: "center",
+          //         borderRadius: 5,
+          //         boxShadow: "2px 2px 2px 2px #fce6ff",
+          //       }}
+          //       sx={{ ml: 1, mr: 2, mt: 5 }}
+          //     >
+          //       <CardContent>
+          //         <Box sx={{ ml: 10 }}>
+          //           <h2>Sign Up</h2>
+          //         </Box>
+          //         <p>
+          //           Have an existing account?{" "}
+          //           <Button
+          //             variant="text"
+          //             onClick={(e) => navigate("/main/login")}
+          //           >
+          //             Log In
+          //           </Button>
+          //         </p>
+          //         <form onSubmit={handleSubmit}>
+          //           <div>
+          //             <h6>First Name</h6>
+          //             <TextField
+          //               className="w-100"
+          //               variant="standard"
+          //               type="firstName"
+          //               id="firstName"
+          //               onChange={handleChange}
+          //               value={values.firstName}
+          //             />
+          //           </div>
+          //           <br></br>
+          //           <div>
+          //             <h6>Last Name</h6>
+          //             <TextField
+          //               className="w-100 "
+          //               variant="standard"
+          //               type="lastName"
+          //               id="lastName"
+          //               onChange={handleChange}
+          //               value={values.lastName}
+          //             />
+          //           </div>
+          //           <br></br>
+          //           <div>
+          //             <h6>User Name</h6>
+          //             <TextField
+          //               className="w-100 "
+          //               variant="standard"
+          //               type="username"
+          //               id="username"
+          //               onChange={handleChange}
+          //               value={values.username}
+          //             />
+          //           </div>
+          //           <br></br>
+          //           <div>
+          //             <h6>Email Address</h6>
+          //             <TextField
+          //               className="w-100 "
+          //               variant="standard"
+          //               type="email"
+          //               id="email"
+          //               onChange={handleChange}
+          //               value={values.email}
+          //             />
+          //           </div>
+          //           <br></br>
+          //           <div>
+          //             <h6>Password</h6>
+          //             <TextField
+          //               className="w-100 "
+          //               variant="standard"
+          //               type="password"
+          //               id="password"
+          //               onChange={handleChange}
+          //               value={values.password}
+          //             />
+          //           </div>
+
+          //           <FormGroup sx={{ mt: 1 }}>
+          //             <FormControlLabel
+          //               control={<Checkbox />}
+          //               label="Remember me"
+          //             />
+          //           </FormGroup>
+          //           <Box sx={{ ml: 12 }}>
+          //             <Button
+          //               type="submit"
+          //               variant="contained"
+          //               className="mt-2 mb-2 "
+          //               color="secondary"
+          //               size="large"
+          //             >
+          //               Sign Up
+          //             </Button>
+          //           </Box>
+          //         </form>
+          //         <hr></hr>
+          //         <Stack direction="row" sx={{ ml: 7, color: "text.error" }}>
+          //           <GoogleIcon />
+          //           <FacebookOutlinedIcon />
+          //           <TwitterIcon />
+          //           <InstagramIcon />
+          //           <LinkedInIcon />
+          //           <GitHubIcon />
+          //         </Stack>
+          //       </CardContent>
+          //     </Box>
+          //   </Card>
+          // </Container>
         )}
       </Formik>
     </div>

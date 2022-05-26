@@ -166,16 +166,14 @@ const BuyNovel = () => {
 
   return (
     <div>
-      <Header></Header>
-      <Formik initialValues={checkoutForm} onSubmit={payMoney}>
-        {({ values, handleChange, handleSubmit }) => (
+ 
           <main className="mt-0 pt-4">
             <div className="container wow fadeIn">
               <h2 className="my-5 h2 text-center">Buy Novel</h2>
               <div className="row">
                 <div className="col-md-8 mb-4">
                   <div className="card">
-                    <form className="card-body" onSubmit={handleSubmit}>
+                    {/* <form className="card-body" onSubmit={handleSubmit}> */}
                       <div className="row">
                         <div className="col-md-6 mb-2">
                           <div className="md-form ">
@@ -184,7 +182,7 @@ const BuyNovel = () => {
                               type="text"
                               id="title"
                               className="form-control"
-                              value={values.title}
+                              value={novel.title}
                             />
                             <label for="title" className="">
                               Title
@@ -199,7 +197,7 @@ const BuyNovel = () => {
                               type="text"
                               id="author"
                               className="form-control"
-                              value={values.author}
+                              value={novel.author}
                             />
                             <label for="lastName" className="">
                               Author
@@ -213,7 +211,7 @@ const BuyNovel = () => {
                           disabled
                           type="text"
                           id="genre"
-                          value={values.genre}
+                          value={novel.genre}
                           className="form-control"
                           placeholder="youremail@example.com"
                         />
@@ -235,13 +233,13 @@ const BuyNovel = () => {
                           Address
                         </label>
                       </div>
-                      <hr className="mb-4" />
-                    </form>
+                    {/* </form> */}
                   </div>
                 </div>
 
                 <div className="col-md-4 mb-4">
                   <div>
+                    <form onSubmit={payMoney}> 
                     <CardElement className="card" options={CARD_OPTIONS} />
 
                     <Button
@@ -255,13 +253,12 @@ const BuyNovel = () => {
                         ? "Loading..."
                         : `Pay ₹${novel.price}/-`}
                     </Button>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </main>
-        )}
-      </Formik>
     </div>
   );
 };

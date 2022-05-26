@@ -73,7 +73,6 @@ const displayNovels= () => {
 return (
  
 < div>
-<Header />
 <div className="container">
 
 <Grid container spacing={6} className="mt-0">

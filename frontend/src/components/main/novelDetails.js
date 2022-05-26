@@ -93,7 +93,7 @@ const NovelDetail = () => {
   return (
 
 <div>
-    <Header></Header>
+
     <Container maxWidth='md'
     style={{
       paddingTop:20
