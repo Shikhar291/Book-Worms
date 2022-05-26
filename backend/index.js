@@ -6,7 +6,7 @@ const userRouter = require("./routers/userRouter").router;
 const novelRouter = require("./routers/novelRouter").router;
 const utilRouter = require("./routers/utils").router;
 const queryRouter = require("./routers/queryRouter").router;
-const checkoutRouter=require("./routers/checkoutRouter").router;
+const checkoutRouter = require("./routers/checkoutRouter").router;
 
 const { createServer } = require("http");
 const { Server } = require("socket.io");
@@ -47,8 +47,25 @@ io.on("connection", (socket) => {
 //          console.log("listening 5000...");
 // });
 
-const stripe_sk = "sk_test_51L1Wf4SG8drK0Wt5r9B58VpCVuppBvRGQciPAEEoKGtMEtRWr9HpGdBK8ulyJuckoVaJcaUSPDeYibVSIi89rGgj006q8dj8ZW";
+const stripe_sk =
+  "sk_test_51L1Wf4SG8drK0Wt5r9B58VpCVuppBvRGQciPAEEoKGtMEtRWr9HpGdBK8ulyJuckoVaJcaUSPDeYibVSIi89rGgj006q8dj8ZW";
 const stripe = require("stripe")(stripe_sk);
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+);
+
+app.use(express.static("./uploads"));
+app.use(express.json());
+// app.use(cors({origin:['http://localhost:3000'],}));
+
+app.use("/user", userRouter);
+app.use("/novel", novelRouter);
+app.use("/util", utilRouter);
+app.use("/query", queryRouter);
+app.use("/checkout", checkoutRouter);
 
 app.post("/create-payment-intent", async (req, res) => {
   const data = req.body;
@@ -59,27 +76,10 @@ app.post("/create-payment-intent", async (req, res) => {
   res.status(200).json(paymentIntent);
 });
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-  })
-);
+app.get("/", (req, resp) => {
+  resp.send("home");
+});
 
 httpServer.listen(5000, () => {
   console.log("server started");
-});
-
-app.use(express.static("./uploads"));
-app.use(express.json());
-// app.use(cors({origin:['http://localhost:3000'],}));
-
-app.use("/user", userRouter);
-app.use("/novel", novelRouter);
-app.use("/util", utilRouter);
-app.use("/query", queryRouter);
-app.use("/checkout",checkoutRouter);
-
-app.get("/", (req, resp) => {
-  resp.send("home");
-  2;
 });
