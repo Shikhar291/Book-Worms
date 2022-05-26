@@ -70,32 +70,42 @@ const Signup = () => {
     >
       <Formik initialValues={userForm} onSubmit={userSubmit}>
         {({ values, handleChange, handleSubmit }) => (
-          <div>
-            <div
-              className="row  align-items-center h-100"
-              style={{ marginRight: "0" }}
-            >
-              <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-2 mx-auto">
-                <Card
-                  sx={{
-                    maxWidth: 400,
-                    maxHeight: 600,
-                    height: "calc(95vh - 80px)",
-                    bgcolor: "#ffffff66",
-                    m: "auto",
-                  }}
-                  style={{
-                    borderStyle: "none",
-                    borderRadius: 0,
-                  }}
-                >
-                  <CardContent>
-                    {" "}
+         <div className="" style={{ width: "100%" }}>
+         <div
+           className="row align-items-center h-100"
+           style={{ marginRight: "0" }}
+         >
+           <div className="col-lg-3 col-md-4 col-sm-6 col-11 mt-5 mx-auto">
+             <Card
+               className="card1"
+               sx={{
+                 maxWidth: 400,
+                 bgcolor: "#ffffff66",
+               }}
+               style={{
+                 borderStyle: "none",
+                 borderRadius: 0,
+               }}
+             >
+               <CardContent>
+                 <Box>
+                   <h2 className="text-center">LOGIN</h2>
+                 </Box>
+                 <p>
+                   Don't have an account?{" "}
+                   <Button
+                     variant="text"
+                     color="primary"
+                     onClick={(e) => navigate("/main/signup")}
+                   >
+                     Sign up
+                   </Button>
+                 </p>
                     <form onSubmit={handleSubmit}>
                       <div className="row">
                         <div className="col-md-6 mb-4">
                           <div className="form-outline">
-                            <input
+                            <TextField
                               variant="standard"
                               type="firstName"
                               id="firstName"
@@ -110,7 +120,7 @@ const Signup = () => {
                         </div>
                         <div className="col-md-6 mb-4">
                           <div className="form-outline">
-                            <input
+                            <TextField
                               variant="standard"
                               type="lastName"
                               id="lastName"
@@ -128,7 +138,7 @@ const Signup = () => {
                       <div className="row">
                         <div className="col-md-12 mb-12">
                           <div className="form-outline">
-                            <input
+                            <TextField
                               variant="standard"
                               type="username"
                               id="username"
@@ -146,7 +156,7 @@ const Signup = () => {
                       <div className="row">
                         <div className="col-md-12 mb-12 pb-2">
                           <div className="form-outline">
-                            <input
+                            <TextField
                               variant="standard"
                               type="email"
                               id="email"

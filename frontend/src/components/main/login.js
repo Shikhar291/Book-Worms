@@ -80,7 +80,7 @@ const Login = () => {
 
   return (
     <div
-      className="signup-img full-height"
+      className="signup-img"
       style={{ height: "calc(100vh - 70px)" }}
     >
       <Formik initialValues={loginForm} onSubmit={loginSubmit}>
