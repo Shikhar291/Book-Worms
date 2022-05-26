@@ -26,9 +26,7 @@ import { Opacity } from "@mui/icons-material";
 import "./login.css";
 import Header from "./header";
 
-
 const Login = () => {
-  
   const url = app_config.api_url;
 
   const navigate = useNavigate();
@@ -81,18 +79,23 @@ const Login = () => {
   };
 
   return (
-    <div className="signup-img" style={{ height:'100vh'}}>
+    <div
+      className="signup-img full-height"
+      style={{ height: "calc(100vh - 70px)" }}
+    >
       <Formik initialValues={loginForm} onSubmit={loginSubmit}>
         {({ values, handleChange, handleSubmit }) => (
-          <div className="" style={{width:'100%'}}>
-            <div className="row align-items-center h-100" style={{marginRight:'0'}}>
+          <div className="" style={{ width: "100%" }}>
+            <div
+              className="row align-items-center h-100"
+              style={{ marginRight: "0" }}
+            >
               <div className="col-lg-3 col-md-4 col-sm-6 col-11 mt-5 mx-auto">
                 <Card
                   className="card1"
                   sx={{
                     maxWidth: 400,
                     bgcolor: "#ffffff66",
-
                   }}
                   style={{
                     borderStyle: "none",
@@ -158,7 +161,7 @@ const Login = () => {
                         </Button>
                       </Box>
                       <hr></hr>
-                      <Stack direction="row" spacing={4} sx={{ mt: 3}}>
+                      <Stack direction="row" spacing={4} sx={{ mt: 3 }}>
                         <Button
                           variant="outlined"
                           color="error"
