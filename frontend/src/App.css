@@ -59,6 +59,17 @@ font-family: 'EB Garamond', serif;
 {
   display:flex;
   float: right;
+
+}
+.pos
+{
+  
+
+  position: fixed;
+  /* top:px; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .overlay {
@@ -70,8 +81,9 @@ font-family: 'EB Garamond', serif;
 
 .signup-img{
 
-  background: url(https://wallpaperaccess.com/full/253342.jpg);
+  background: url(https://stories.uiowa.edu/sites/stories.uiowa.edu/files/2021_12_14-books-at-dey-house-jatorner-0015.jpg);
   background-size: cover;
+  
 }
 
 .home
@@ -89,8 +101,6 @@ font-family: 'EB Garamond', serif;
 
 .addnovelbg
 {
-  
-
   background-image: url('https://stories.uiowa.edu/sites/stories.uiowa.edu/files/2021_12_14-books-at-dey-house-jatorner-0015.jpg');
   background-repeat: no-repeat;
    background-size: cover; 

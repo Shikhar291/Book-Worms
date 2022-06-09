@@ -22,7 +22,7 @@ import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const UpdateNovel = ({ updateFormData }) => {
+const UpdateNovel = ({ updateFormData,setShowUpdateForm}) => {
   const navigate = useNavigate();
 
   const url = app_config.api_url;
@@ -46,7 +46,7 @@ const UpdateNovel = ({ updateFormData }) => {
         Swal.fire({
           icon: "success",
           title: "Novel updated  successfully!",
-        });
+        }); 
 
         navigate("/user/managenovel/");
       }
@@ -70,6 +70,10 @@ const UpdateNovel = ({ updateFormData }) => {
     });
   };
 
+  const cancelUpdate=()=>{
+    setShowUpdateForm(false)
+  }
+
   return (
     <div>
       <Formik initialValues={updateFormData} onSubmit={novelSubmit}>
@@ -77,10 +81,10 @@ const UpdateNovel = ({ updateFormData }) => {
           <form onSubmit={handleSubmit}>
             <Card>
               <CardContent style={{backgroundColor: '#87CEEB'}}>
-              <div class="mask d-flex align-items-center h-100">
-                <div class="container">
+              <div class="d-flex align-items-center h-100">
+                <div class="container-fluid">
                   <div class="row justify-content-center">
-                    <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="col-12 col-lg-12 col-xl-12">
                       <div class="card">
                         <div class="card-body p-4 p-md-5">
                           <h3 class="mb-4 pb-2">Update Novel</h3>
@@ -235,6 +239,21 @@ const UpdateNovel = ({ updateFormData }) => {
                                   color="secondary"
                                 >
                                   Update Novel
+                                </Button>
+
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                              <div class="form-outline">
+                                <Button
+                                  type="submit"
+                                  variant="outlined"
+                                  className="mt-3 my-auto"
+                                  color="secondary"
+                                  onClick={cancelUpdate}
+                                >
+                                  Cancel Update
                                 </Button>
                               </div>
                             </div>

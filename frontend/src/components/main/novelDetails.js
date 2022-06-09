@@ -105,6 +105,7 @@ const NovelDetail = () => {
       <CardMedia
        component="img"
        image={url + "/" + novel.thumbnail}
+
        alt={novel.title}>
       </CardMedia>
      </Card>

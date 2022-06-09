@@ -9,18 +9,25 @@ import {
   Container,
   TextField,
   CardMedia,
+  rgbToHex,
 } from "@mui/material";
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
-import Header from './header';
+import Header from "./header";
+import PersonIcon from "@mui/icons-material/Person";
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import Footer from './footer';
+import TitleIcon from '@mui/icons-material/Title';
 
 const BrowseQuery = () => {
+  const url = app_config.api_url;
 
-const url = app_config.api_url;
-
-const [currentUser, setCurrentUser] = useState(
-  JSON.parse(sessionStorage.getItem("user"))
-);
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
+  const viewQuery=()=>{
+    
+  }
 
   const [queryArray, setQueryArray] = useState([]);
   const navigate = useNavigate();
@@ -39,52 +46,43 @@ const [currentUser, setCurrentUser] = useState(
   }, []);
 
   const displayQueries = () => {
-    return queryArray.map((product,i) => (
-      
-      
-      <tr key={product._id}>
-        <td className="w-5">{i + 1}</td>
-        <td className="w-5">{product.title}</td>
-        <td className="w-10">{product.description}</td>
-        <td>
-        <Button
-              className=""
-              variant="outlined"
-              onClick={(e) => navigate("/user/chat/"+currentUser._id)}
-            >
-              Contact
-            </Button>
-        </td>
+    return queryArray.map((query) => (
+      <Grid item md={3} className="pb-2">
+        <Card style={{ height: "200px" }}>
+          <CardContent>
+            
+            <p className="title text-decoration-underline h5"> {query.title}</p>
+            
+            <p className="p-title mt-4 h5">
+              <PersonIcon />
+              &nbsp;{query.user.firstName}
+            </p>
 
-      </tr>
+            <Button
+              variant="outlined"
+              className="mt-3"
+              onClick={(e) => navigate("/main/viewquery/" + query._id)}
+            >
+              View More
+            </Button>
+          </CardContent>
+        </Card>
+      </Grid>
     ));
   };
-      
-      
 
   return (
-    <div className="fluid">
-      <Header />
-      <h1 className="text-center">User Queries</h1>
-      <table className="table">
-      <thead>
-          <tr>
-            <th className="w-5">S.No</th>
-            <th className="w-5">Title</th>
-            <th className="w-10">description</th>
-            <th className="w-5">Chat</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
+    <div>
+      <div className="container ">
+        <Grid container spacing={6} className="mt-0">
+          {displayQueries()}
+        </Grid>
+      </div>
 
-        <tbody>
-        {displayQueries()}
-        </tbody>
-      
-      </table>
+      <Footer />
+      <div />
     </div>
   );
-
 };
 
 export default BrowseQuery;

@@ -4,9 +4,11 @@ const moongoose=require('../connection');
 const mySchema=new moongoose.Schema({
     
     title:String,
+    thumbnail:String,
     description:String,
     user:{type:mongoose.Types.ObjectId,ref:"users"},
-    createdAt:{type:Date,default:new Date()},//createdAt:Date//user defined
+    isresolved:{type:Boolean,default:false},
+    createdAt:{type:Date,default:new Date()},
 });
 
 const queryModel=moongoose.model('query',mySchema);

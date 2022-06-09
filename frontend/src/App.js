@@ -21,6 +21,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import Home from "./components/home";
 import Authorisor from "./components/authenticator";
 import AdminAuthorisor from "./components/adminAuth";
+import ViewQuery from "./components/main/viewQuery";
+import ManageQuery from "./components/user/manageQuery";
 
 function App() {
   const stripe = loadStripe(
@@ -55,6 +57,7 @@ function App() {
           ></Route>
           <Route element={<BrowseNovel />} path="browsenovel"></Route>
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
+          <Route element={<ViewQuery />} path="viewquery/:id"></Route>
           <Route
             element={
               <Authorisor>
@@ -79,8 +82,9 @@ function App() {
           path="user"
         >
           <Route element={<AddQuery></AddQuery>} path="addquery"></Route>
-          <Route element={<Chat></Chat>} path="chat/:userid"></Route>
+          <Route element={<Chat></Chat>} path="chat"></Route>
           <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
+          <Route element={<ManageQuery></ManageQuery>} path="managequery"></Route>
           <Route
             element={<ManageNovel></ManageNovel>}
             path="managenovel"

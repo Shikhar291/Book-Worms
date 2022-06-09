@@ -127,6 +127,7 @@ const BuyNovel = () => {
 
   const payMoney = async (e) => {
     e.preventDefault();
+    console.log(e.target.value);
     getIntent().then((res) => {
       console.log(res);
       let clientSecret = res.client_secret;
