@@ -23,6 +23,7 @@ import Authorisor from "./components/authenticator";
 import AdminAuthorisor from "./components/adminAuth";
 import ViewQuery from "./components/main/viewQuery";
 import ManageQuery from "./components/user/manageQuery";
+import ManageUser from "./components/admin/manageUser";
 
 function App() {
   const stripe = loadStripe(
@@ -45,9 +46,8 @@ function App() {
           }
           path="admin"
         >
-          <Route element={<AdminProfile></AdminProfile>} path="profile">
-            {" "}
-          </Route>
+          <Route element={<AdminProfile></AdminProfile>} path="profile" />
+          <Route element={<ManageUser />} path="manageuser" />
         </Route>
 
         <Route element={<Main></Main>} path="main">
@@ -84,7 +84,10 @@ function App() {
           <Route element={<AddQuery></AddQuery>} path="addquery"></Route>
           <Route element={<Chat></Chat>} path="chat"></Route>
           <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
-          <Route element={<ManageQuery></ManageQuery>} path="managequery"></Route>
+          <Route
+            element={<ManageQuery></ManageQuery>}
+            path="managequery"
+          ></Route>
           <Route
             element={<ManageNovel></ManageNovel>}
             path="managenovel"
