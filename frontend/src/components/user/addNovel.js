@@ -28,8 +28,8 @@ const AddNovel = () => {
     genre: "",
     thumbnail: "",
     author: "",
-    price: 0,
-    rentPrice: 0,
+    price: "",
+    rentPrice: "",
     rentable: false,
     exchangeble: false,
     user: currentUser._id,
@@ -109,7 +109,7 @@ const AddNovel = () => {
                   <CardContent>
                   <form onSubmit={handleSubmit}>
 
-                    <div class="row">
+                    <div class="row mb-4">
                       <div class="col-md-6 mb-2">
                         <div class="form-outline">
                           
@@ -122,9 +122,7 @@ const AddNovel = () => {
                             type="text"
                             id="title"
                           />
-                          <label class="form-label" for="title">
-                            Title
-                          </label>
+
                         </div>
                       </div>
                       <div class="col-md-6 mb-2">
@@ -138,14 +136,12 @@ const AddNovel = () => {
                             value={values.author}
                             id="author"
                           />
-                          <label class="form-label" for="author">
-                            Author
-                          </label>
+
                         </div>
                       </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mb-4">
                       <div class="col-md-6 mb-2">
                         <div class="form-outline">
                           <input
@@ -157,10 +153,9 @@ const AddNovel = () => {
                             value={values.price}
                             id="price"
                           />
-                          <label class="form-label" for="price">
-                            Purchase Price
-                          </label>
+
                         </div>
+
                       </div>
 
                       <div class="col-md-6 mb-2">
@@ -175,14 +170,12 @@ const AddNovel = () => {
                             id="rentPrice"
                           />
 
-                          <label class="form-label" for="rentPrice">
-                            Rent Price
-                          </label>
+
                         </div>
                       </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mb-4">
                       <div class="col-md-12 mb-2">
                         <div class="form-outline">
                           <input
@@ -194,13 +187,11 @@ const AddNovel = () => {
                             type="text"
                             id="genre"
                           />
-                          <label class="form-label" for="title">
-                            Genre
-                          </label>
+
                         </div>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-4">
                       <div class="col-md-12 mb-2">
                         <div class="form-outline">
                           <input
@@ -212,9 +203,7 @@ const AddNovel = () => {
                             type="text"
                             id="description"
                           />
-                          <label class="form-label" for="title">
-                            Description
-                          </label>
+
                         </div>
                       </div>
                     </div>
@@ -269,7 +258,7 @@ const AddNovel = () => {
                         </div>
                       </div>
 
-                      <div class="col-md-6 mt-2 mb-1">
+                      <div class="col-md-6 mt-3 mb-1">
                         <div class="form-outline">
                           <Button
                             type="submit"
