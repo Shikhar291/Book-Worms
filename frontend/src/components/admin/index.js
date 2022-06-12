@@ -9,7 +9,7 @@ const Admin=()=>{
         {
         name:'Queries',
         icon:<AccountCircle />,
-        link:'/main/browsequery',
+        link:'/admin/managequery',
        },
        {
         name:'Profile',

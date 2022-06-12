@@ -32,6 +32,7 @@ const NovelDetail = () => {
 
   const [classname1, setClassName1] = useState("text-muted h3 font-link4");
   const [classname2, setClassName2] = useState("text-muted h3 font-link4");
+  const [uploadedBy, setUploadedBy] = useState("");
 
   const [exchangeble, setexchangeble] = useState("No");
 
@@ -45,6 +46,7 @@ const NovelDetail = () => {
       .then((data) => {
         console.log(data);
         setNovelDetail(data);
+        setUploadedBy(data.user.firstName);
 
         if (data.rentable == true) {
           setRentable("Yes");
@@ -56,6 +58,7 @@ const NovelDetail = () => {
           setClassName2("text-danger h3 font-link4");
         }
       });
+      
   };
 
   
@@ -105,6 +108,7 @@ const NovelDetail = () => {
       <CardMedia
        component="img"
        image={url + "/" + novel.thumbnail}
+
        alt={novel.title}>
       </CardMedia>
      </Card>
@@ -121,7 +125,7 @@ const NovelDetail = () => {
       {dispalyrentprice(novel.rentable)}
       {dispalyexchange(novel.exchangeble)}
       <hr></hr>
-      <p>Uploaded by -<span className="h6">{novel.author}</span></p>
+      <p>Uploaded by -<span className="h6">{uploadedBy}</span></p>
       <Button variant="contained" color="inherit" className="w-100 mb-3" onClick={(e) => buyNovel()}>BUY NOW</Button>
       <Button disabled={!novel.rentable} variant="contained" color="inherit" className="w-100 mb-3 " onClick={(e) => rentNovel()}>RENT NOW</Button>
       <Button disabled={!novel.exchangeble} variant="contained" color="inherit" className="w-100 ">EXCHANGE</Button>

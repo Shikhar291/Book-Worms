@@ -335,14 +335,19 @@ const Header = () => {
 
   const userMenu = [
     {
-      name: "Profile",
+      name: "Browse Query",
       icon: <AccountCircle />,
-      link: "/profile",
+      link: "/main/browsequery",
     },
     {
       name: "Manage Novels",
       icon: <Subscriptions />,
       link: "/user/managenovel",
+    },
+    {
+      name: "Manage Query",
+      icon: <Subscriptions />,
+      link: "/user/managequery",
     },
     {
       name: "Add Novels",
@@ -372,7 +377,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

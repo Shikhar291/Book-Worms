@@ -59,6 +59,17 @@ font-family: 'EB Garamond', serif;
 {
   display:flex;
   float: right;
+
+}
+.pos
+{
+  
+
+  position: fixed;
+  /* top:px; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .overlay {
@@ -70,8 +81,26 @@ font-family: 'EB Garamond', serif;
 
 .signup-img{
 
-  background: url(https://wallpaperaccess.com/full/253342.jpg);
+  background: url(https://stories.uiowa.edu/sites/stories.uiowa.edu/files/2021_12_14-books-at-dey-house-jatorner-0015.jpg);
   background-size: cover;
+  
+}
+
+.selectWrapper{
+  border-radius:36px;
+  display:inline-block;
+  overflow:hidden;
+  background:#cccccc;
+  border:1px solid #cccccc;
+}
+
+.selectBox{
+  width:200px;
+  height:40px;
+  border:0px;
+  outline:none;
+  background-color: black;
+  color: white;
 }
 
 .home
@@ -89,8 +118,6 @@ font-family: 'EB Garamond', serif;
 
 .addnovelbg
 {
-  
-
   background-image: url('https://stories.uiowa.edu/sites/stories.uiowa.edu/files/2021_12_14-books-at-dey-house-jatorner-0015.jpg');
   background-repeat: no-repeat;
    background-size: cover; 
@@ -119,3 +146,61 @@ font-family: 'EB Garamond', serif;
 .full-height{
   height: "calc(100vh - 70px)";
 }
+
+
+.homes{
+  height: 700px;
+  object-fit: cover;
+  background-image: url('http://localhost:5000/imageA.jpeg');
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url("http://localhost:5000/imageA.jpeg");
+  background-size: cover;
+}
+
+
+.feature{
+  padding: 3% 12%;
+  text-align: center;
+}
+
+.feature-box{
+  text-align: center;
+  padding-right: 4%;
+  padding-left: 4%;
+  padding-bottom: 4%;
+  padding-top: 4%;
+}
+
+.home-browse{
+  height:45vh;
+  background: url("http://localhost:5000/imageD.jpeg");
+  background-size: cover;
+  background-position: center
+}
+
+
+.inner{
+  padding-top: 140px;
+}
+
+.carousel-item{
+  height: 600px;
+  text-align: center;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 130px;
+  background-color: #f3f0ef;
+}
+
+.testimonial{
+  width:20%;
+  object-fit: cover
+}
+
+.text{
+  padding-left: 15px;
+  padding-top: 90px;
+}
+ input.larger{
+  width: 18px;
+  height: 18px;
+ }

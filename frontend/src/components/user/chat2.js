@@ -5,7 +5,7 @@ import { Button, Card, CardContent } from "@mui/material";
 import "./chat.css";
 import { useParams } from "react-router-dom";
 
-const Chat = () => {
+const Chat2 = () => {
   const url = app_config.api_url;
   const [socket, setSocket] = useState(io(url, { autoConnect: false }));
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')))
@@ -15,29 +15,24 @@ const Chat = () => {
   const {userid} = useParams();
 
   const [messageList, setMessageList] = useState([
-    
-    // { text: "Kon sa exam hai kal", sent: true },
-    // { text: "Compiler Designer, syllabus batao iska", sent: false },
-    // { text: "kal pata chalega jab exam denge 😎😎", sent: true },
-    // { text: "bye bye Good Night!!", sent: true },
   ]);
   
 
   useEffect(() => {
     socket.connect();
-    socket.emit('add', currentUser._id);
-    socket.emit('checkuser', userid);
+    // socket.emit('add', currentUser._id);
+    // socket.emit('checkuser', userid);
   }, []);
 
-  socket.on('isonline', (data) => {
-    if(data.status === 'online'){
-      setConnectedUser(data.socketid);
-      setStatus('Online')
+//   socket.on('isonline', (data) => {
+//     if(data.status === 'online'){
+//       setConnectedUser(data.socketid);
+//       setStatus('Online')
       
-    }else if(data.status === 'offline'){
-      setStatus('Offline')
-    }
-  })
+//     }else if(data.status === 'offline'){
+//       setStatus('Offline')
+//     }
+//   })
 
   // subscribing the event
   socket.on("recmsg", (data) => {
@@ -92,4 +87,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default Chat2;
