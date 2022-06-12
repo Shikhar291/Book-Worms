@@ -36,7 +36,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Home />} path="/"></Route>
+        <Route element={<Home />} path="/" name="/home"></Route>
         <Route
           element={
             <AdminAuthorisor>

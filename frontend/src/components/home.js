@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
 import React from "react";
 
+import Header from "./main/header";
+import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 import {
+  Box,
   Button,
   Card,
   CardContent,
@@ -11,159 +14,200 @@ import {
   TextField,
   CardMedia,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import header from "./main/header";
-import Header from "./main/header";
+import { color, textAlign } from "@mui/system";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const CssButton = styled(Button)(({ theme }) => ({
+    "&:hover": {
+      color: "#ced3d8",
+    },
+  }));
+
   return (
     <div>
+      <div className="homes" fixed>
         <Header></Header>
-      <header>
-        <div className="view jarallax home" data-jarallax='{"speed": 0.2}'>
-          <div className=" mask rgba-purple-slight">
-            <div className="container h-100 d-flex justify-content-center align-items-center">
-              <div className="row pt-5 mt-3">
-                <div className="col-md-12 wow fadeIn mb-3">
-                  <div className="text-center">
-                    <h1 className="display-4 font-weight-bold mb-5 wow fadeInUp">
-                      Our New Novels are Ready
-                    </h1>
-                    <h5 className="mb-5 wow fadeInUp" data-wow-delay="0.2s">
-                      It comes with a lot of new features, easy to buy rent and
-                      affordable cost. Check it out now!
-                    </h5>
-                    <div className="wow fadeInUp" data-wow-delay="0.4s">
-                      <a className="btn btn-purple btn-rounded">
-                        <i className="fas fa-user left"></i> Sign up!
-                      </a>
-                      <a className="btn btn-outline-purple btn-rounded">
-                        <i className="fas fa-book left"></i> Learn more
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main>
-        <div className="container">
-          <section className="section wow fadeIn" data-wow-delay="0.3s">
-            <h1 className="font-weight-bold text-center h1 my-5">
-              Why is it so great?
-            </h1>
-
-            <p className="text-center grey-text mb-5 mx-auto w-responsive lead">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
-              error amet numquam iure provident voluptate esse quasi, veritatis
-              totam voluptas nostrum quisquam eum porro a pariatur accusamus
-              veniam.
-            </p>
-
-            <div className="row">
-              <div className="col-md-4">
-                <div className="row mb-2">
-                  <div className="col-2">
-                    <i className="fas fa-2x fa-flag-checkered indigo-text"></i>
-                  </div>
-                  <div className="col-10">
-                    <h5 className="font-weight-bold mb-4">International</h5>
-                    <p className="grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Reprehenderit maiores nam, aperiam minima assumenda.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="row mb-2">
-                  <div className="col-2">
-                    <i className="fas fa-2x fa-flask blue-text"></i>
-                  </div>
-                  <div className="col-10">
-                    <h5 className="font-weight-bold mb-4">Experimental</h5>
-                    <p className="grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Reprehenderit maiores nam, aperiam minima assumenda.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="row mb-2">
-                  <div className="col-2">
-                    <i className="fas fa-2x fa-glass-martini cyan-text"></i>
-                  </div>
-                  <div className="col-10">
-                    <h5 className="font-weight-bold mb-4">Relaxing</h5>
-                    <p className="grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Reprehenderit maiores nam, aperiam minima assumenda.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-      <div className="col-md-4 mb-2 text-center text-md-left flex-center">
-        <img src="https://media.istockphoto.com/photos/black-hard-cover-book-isolated-on-white-background-copy-space-picture-id1269340773?b=1&k=20&m=1269340773&s=170667a&w=0&h=r1jgxoLnf3Cp4acu5QO6bQZ_RyhCc22lappzIg5EUPQ=" alt="" className="z-depth-0" />
+        <Container
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
+            paddingTop: 25,
+            color: "white",
+          }}
+        >
+          <p className="h5">Come and join our reading club</p>
+          <h1 style={{ fontSize: 67, fontWeight: 400 }}>Enjoy the silence</h1>
+          <h1 style={{ fontSize: 67, fontWeight: 400 }}>in our reading room</h1>
+        </Container>
       </div>
 
-              <div className="col-md-4">
-                <div className="row mb-2">
-                  <div className="col-2">
-                    <i className="fas fa-2x fa-heart deep-purple-text"></i>
-                  </div>
-                  <div className="col-10">
-                    <h5 className="font-weight-bold mb-4">Beloved</h5>
-                    <p className="grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Reprehenderit maiores nam, aperiam minima assumenda.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="row mb-2">
-                  <div className="col-2">
-                    <i className="fas fa-2x fa-bolt purple-text"></i>
-                  </div>
-                  <div className="col-10">
-                    <h5 className="font-weight-bold mb-4">Rapid</h5>
-                    <p className="grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Reprehenderit maiores nam, aperiam minima assumenda.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="row mb-2">
-                  <div className="col-2">
-                    <i className="fas fa-2x fa-magic pink-text"></i>
-                  </div>
-                  <div className="col-10">
-                    <h5 className="font-weight-bold mb-4">Magical</h5>
-                    <p className="grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Reprehenderit maiores nam, aperiam minima assumenda.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <hr className="mb-5" />
+      <div class="row g-0 feature">
+        <div class="col-lg-4 feature-box">
+          <i
+            class="fa-solid fa-book-open fa-4x"
+            style={{ paddingBottom: 16 }}
+          ></i>
+          <h4 style={{ paddingBottom: 4 }}>ADD YOUR BOOK</h4>
+          <p>
+            Add your book which you have already read,earn some money let other
+            bookworms enjoy
+          </p>
         </div>
-      </main>
 
-      <footer className="page-footer pt-4 mt-4   text-center text-md-left mt-5">
-        <div className="footer-copyright py-3 text-center">
-          <div className="container-fluid">
-            © 2019 Copyright:{" "}
-            <a href="https://mdbootstrap.com/docs/jquery/"> Book Worms </a>
+        <div class="col-lg-4 feature-box">
+          <i
+            class="fa-solid fa-right-left fa-4x"
+            style={{ paddingBottom: 16 }}
+          ></i>
+          <h4 style={{ paddingBottom: 4 }}>BUY RENT EXCHANGE</h4>
+          <p>
+            Buy or rent book at low price or exchange it by directly having a
+            chat with the owner
+          </p>
+        </div>
+
+        <div class="col-lg-4 feature-box">
+          <i
+            class="fa-solid fa-circle-question fa-4x"
+            style={{ paddingBottom: 16 }}
+          ></i>
+          <h4 style={{ paddingBottom: 4 }}>PEOPLE QUERIES</h4>
+          <p>
+            Do someone a favour by giving them the book they want to read and
+            enjoy by directly having a chat{" "}
+          </p>
+        </div>
+      </div>
+
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+        data-interval="600"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <h1>
+              “It is our choices, Harry, that show what we truly are, far more
+              than our abilities.”
+            </h1>
+            <Container
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                paddingTop: 3,
+                paddingLeft: 40,
+              }}
+            >
+              <img
+                className="testimonial"
+                src="http://localhost:5000/imageC.jpeg"
+                alt="Harry potter"
+              />
+              <div className="text">
+                <h3>Harry Potter and the Chamber of Secrets</h3>
+                <h5>-JK Rowling</h5>
+              </div>
+            </Container>
+          </div>
+
+          <div class="carousel-item">
+            <h1>
+              "Mediocrity knows nothing higher than itself; but talent instantly
+              recognizes genius."
+            </h1>
+            <Container
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                paddingTop: 3,
+                paddingLeft: 40,
+              }}
+            >
+              <img
+                className="testimonial"
+                src="http://localhost:5000/imageB.jpeg"
+                alt="sherlock homes "
+              />
+              <div className="text">
+                <h3>The Adventure Of The Blue Carbuncle</h3>
+                <h5>-Arthur Conan Doyle</h5>
+              </div>
+            </Container>
+          </div>
+
+          <div class="carousel-item">
+            <h1>
+              "You step into the Road, and if you don’t keep your feet, there is
+              no knowing where you might be swept off to."
+            </h1>
+            <Container
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                paddingTop: 3,
+                paddingLeft: 40,
+              }}
+            >
+              <img
+                className="testimonial"
+                src="http://localhost:5000/imageE.jpeg"
+                alt="lord of rings "
+              />
+              <div className="text">
+                <h3>The Lord of the Rings</h3>
+                <h5>-J.R.R. Tolkien</h5>
+              </div>
+            </Container>
           </div>
         </div>
-      </footer>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div className="home-browse" fixed>
+        <Container
+          className="inner"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
+            color: "white",
+          }}
+        >
+          <h2 style={{ paddingBottom: 10 }}>
+            Browse Through Our Complete Library
+          </h2>
+          <CssButton
+            color="inherit"
+            disableRipple
+            onClick={(e) => navigate("/main/browseNovel")}
+          >
+            BROWSE COLLECTIONS ➜
+          </CssButton>
+        </Container>
+      </div>
     </div>
   );
 };

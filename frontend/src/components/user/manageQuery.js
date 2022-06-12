@@ -133,8 +133,8 @@ const ManageQuery = () => {
             <th className="w-5">Query Title</th>
             <th className="w-10">Uploaded by</th>
 
-            <th className="w-5">Status</th>
             <th className="w-5">Details</th>
+            <th className="w-5">Status</th>
           </tr>
         </thead>
         <tbody>{displayQuery()}</tbody>

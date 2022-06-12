@@ -25,6 +25,7 @@ const BrowseNovel = () => {
 
   const addQuery = () => {};
   const [keyword, setKeyword] = useState("");
+  const [keyword2, setKeyword2] = useState("");
 
   const fetchData = () => {
     fetch("http://localhost:5000" + "/novel/getall")
@@ -43,7 +44,7 @@ const BrowseNovel = () => {
   const displayNovels = () => {
     return novelArray.map((novel) => (
       <Grid item md={3} className="pb-2">
-        <Card style={{ height: "500px" }}>
+        <Card style={{ height: "500px"}}>
           <CardMedia
             component="img"
             height="320"
@@ -90,37 +91,86 @@ const BrowseNovel = () => {
     );
   };
 
+  const filterbyGenre = (e) => {
+    setKeyword2(e.target.value.toLowerCase());
+    console.log(keyword2);
+    setNovelArray(
+      novelArray2.filter((novel) =>
+        novel.genre.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
+  };
+
+
+
   return (
     <div>
-      <div className="container mb-3">
-        {/* <div className="input-group">
-          <input className="form-control" onChange={e=> setKeyword(e.target.value)} />
-          <button onClick={filterNovels}>Search</button>
-        </div> */}
-
-        <div class="input-group">
-          <div class="form-outline">
-          <input className="form-control" onChange={e=> setKeyword(e.target.value)} />
-            <label class="form-label" for="form1">
-              Search
-            </label>
-          </div>
-          
-          <button onClick={filterNovels} class="btn btn-primary h-100">
-            <i class="fas fa-search"></i>
-          </button>
+              <div className="row mt-4 container justify-content-end">
+        
+        <div className="col-lg-3 col-md-3 col-mb-3">
+        
+        <div className="selectWrapper">
+        <select onChange={filterbyAuthor} className="selectBox text-center">
+            <option value="">Filter by Author</option>
+            <option value="">All</option>
+            <option value="Harper Lee">Harper Lee</option>
+            <option value="J. K. Rowling">J. K. Rowling</option>
+          </select>
         </div>
 
-        <select onChange={filterbyAuthor}>
-          <option value=""></option>
-          <option value="">All</option>
-          <option value="Harper Lee">Harper Lee</option>
-          <option value="J. K. Rowling">J. K. Rowling</option>
-        </select>
+        </div>
+
+        
+        <div className="col-lg-3 col-md-3 col-mb-3">
+        <div className="selectWrapper">
+        <select onChange={filterbyGenre} className="selectBox text-center">
+         
+        <option value="">Filter by Genre</option>
+            <option value="">All</option>
+            <option value="Southern Gothic">Southern Gothic</option>
+            <option value="Fable">Fable</option>
+            <option value="Science fiction">Science fiction</option>
+            <option value="Mythology">Mythology</option>
+            <option value="Tragedy">Tragedy</option>
+            <option value="Fantasy">Fantasy</option>
+          </select>
+          </div>
+        </div>
+
+        <div className="col-lg-3 col-md-3 col-mb-3">
+
+        <div className="input-group">
+            <div className="form-outline">
+              <div className="row">
+                <div className="col-lg-8">
+                  <input
+                    className="form-control"
+                    onChange={(e) => setKeyword(e.target.value)}
+                  />
+                </div>
+                <div className="col-lg-1">
+                  <button onClick={filterNovels} className="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          
+        </div>
+      </div>
+
+      <div className="container mb-5">
+
         <Grid container spacing={6} className="mt-0">
+
           {displayNovels()}
         </Grid>
       </div>
+
 
       <Footer />
     </div>

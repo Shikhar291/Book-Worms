@@ -11,7 +11,7 @@ import {
     const navigate=useNavigate();
     return (
 
-        <div className="pos">
+        <div className="pos mt-5">
 <footer className="text-center text-white " style={{ backgroundColor: '#0a4275' }}>
     <div className='text-center p-3' style={{ backgroundColor: 'rgba(255, 255, 255,0.1)' }}>
         © 2020 Copyright:

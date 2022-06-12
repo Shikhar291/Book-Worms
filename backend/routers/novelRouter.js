@@ -18,7 +18,7 @@ router.post('/add',(req,res)=>{
 
 router.get('/getall',(req,res)=>{
 
-    Model.find({})
+    Model.find({}).populate('user')
       .then((data) => {
         console.log("product data fetched successfully..");
         res.status(200).json(data);
@@ -34,7 +34,7 @@ router.get('/getbyid/:id',(req,res)=>{
 
   const id=req.params.id;
 
-  Model.findById(id).then((data)=>{
+  Model.findById(id).populate("user").then((data)=>{
 
     console.log("product fetched successfully");
     res.status(200).json(data);
