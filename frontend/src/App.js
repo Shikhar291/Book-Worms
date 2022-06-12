@@ -23,6 +23,7 @@ import Authorisor from "./components/authenticator";
 import AdminAuthorisor from "./components/adminAuth";
 import ViewQuery from "./components/main/viewQuery";
 import ManageQuery from "./components/user/manageQuery";
+import ResetPassword from "./components/main/resetpassword";
 
 function App() {
   const stripe = loadStripe(
@@ -58,6 +59,7 @@ function App() {
           <Route element={<BrowseNovel />} path="browsenovel"></Route>
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
           <Route element={<ViewQuery />} path="viewquery/:id"></Route>
+          <Route element={<ResetPassword></ResetPassword>} path="resetpassword"></Route>
           <Route
             element={
               <Authorisor>
