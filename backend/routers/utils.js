@@ -1,5 +1,6 @@
 const multer = require("multer");
 const router = require("express").Router();
+const { SMTPClient } = require("emailjs");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -16,4 +17,51 @@ router.post("/uploadfile", myStorage.single("myfile"), (req, res) => {
   res.status(200).json({ status: "success" });
 });
 
-module.exports = {router};
+const initMail = () => {
+  return new SMTPClient({
+    user: "startupmuneem3@gmail.com",
+    password: "rpzjbdmmvkzrmxxc",
+    host: "smtp.gmail.com",
+    ssl: true,
+  });
+};
+
+const client = initMail();
+const sendMail = (to, subject, text) => {
+  client.send(
+    {
+      text: text,
+      from: "startupmuneem3@gmail.com",
+      to: to,
+
+      cc: "",
+      subject: subject,
+    },
+    (err, message) => {
+      console.log(err || message);
+    }
+  );
+};
+
+router.post("/sendmail", (req, res) => {
+  const data = req.body;
+  sendMail(data.to, data.subject, data.text);
+  res.status(200).json({ message: "mail sent successfully" });
+});
+
+router.post("/", (req, res) => {
+  console.log(req.body);
+
+  new Model(req.body)
+    .save()
+    .then((data) => {
+      console.log("Email Sent successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+module.exports = router;
