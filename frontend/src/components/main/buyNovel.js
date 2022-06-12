@@ -112,7 +112,6 @@ const BuyNovel = () => {
       });
   };
 
-  useEffect(() => {}, []);
 
   const getIntent = () => {
     const requestOptions = {

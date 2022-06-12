@@ -62,6 +62,7 @@ app.use(express.json());
 // app.use(cors({origin:['http://localhost:3000'],}));
 
 app.use("/user", userRouter);
+
 app.use("/novel", novelRouter);
 app.use("/util", utilRouter);
 app.use("/query", queryRouter);
