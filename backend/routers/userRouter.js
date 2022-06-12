@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Model = require("../models/userModel").userModel;
 
-
 router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
@@ -15,7 +14,6 @@ router.post("/add", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 router.post("/verify", (req, res) => {
   let formdata = req.body;
@@ -46,6 +44,28 @@ router.get("/getall", (req, res) => {
   Model.find({})
     .then((data) => {
       console.log("User data saved successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/getbyemail/:email", (req, res) => {
+  Model.findOne({ email: req.params.email })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/update/:id", (req, res) => {
+  Model.findByIdAndUpdate(req.params.id, req.body)
+    .then((data) => {
       res.status(200).json(data);
     })
     .catch((err) => {
