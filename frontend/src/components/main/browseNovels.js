@@ -9,6 +9,7 @@ import {
   Container,
   TextField,
   CardMedia,
+  Slider,
 } from "@mui/material";
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +21,8 @@ const BrowseNovel = () => {
 
   const [novelArray, setNovelArray] = useState([]);
   const [novelArray2, setNovelArray2] = useState([]);
+
+  const [priceRange, setPriceRange] = useState([100, 1000]);
 
   const navigate = useNavigate();
 
@@ -44,7 +47,7 @@ const BrowseNovel = () => {
   const displayNovels = () => {
     return novelArray.map((novel) => (
       <Grid item md={3} className="pb-2">
-        <Card style={{ height: "500px"}}>
+        <Card style={{ height: "500px" }}>
           <CardMedia
             component="img"
             height="320"
@@ -91,6 +94,14 @@ const BrowseNovel = () => {
     );
   };
 
+  const filterbyPrice = (e) => {
+    setNovelArray(
+      novelArray2.filter((novel) =>
+        novel.price > priceRange[0] && novel.price < priceRange[1]
+      )
+    );
+  };
+
   const filterbyGenre = (e) => {
     setKeyword2(e.target.value.toLowerCase());
     console.log(keyword2);
@@ -101,45 +112,37 @@ const BrowseNovel = () => {
     );
   };
 
-
-
   return (
     <div>
-              <div className="row mt-4 container justify-content-end">
-        
+      <div className="row mt-4 justify-content-end">
         <div className="col-lg-3 col-md-3 col-mb-3">
-        
-        <div className="selectWrapper">
-        <select onChange={filterbyAuthor} className="selectBox text-center">
-            <option value="">Filter by Author</option>
-            <option value="">All</option>
-            <option value="Harper Lee">Harper Lee</option>
-            <option value="J. K. Rowling">J. K. Rowling</option>
-          </select>
-        </div>
-
-        </div>
-
-        
-        <div className="col-lg-3 col-md-3 col-mb-3">
-        <div className="selectWrapper">
-        <select onChange={filterbyGenre} className="selectBox text-center">
-         
-        <option value="">Filter by Genre</option>
-            <option value="">All</option>
-            <option value="Southern Gothic">Southern Gothic</option>
-            <option value="Fable">Fable</option>
-            <option value="Science fiction">Science fiction</option>
-            <option value="Mythology">Mythology</option>
-            <option value="Tragedy">Tragedy</option>
-            <option value="Fantasy">Fantasy</option>
-          </select>
+          <div className="selectWrapper">
+            <select onChange={filterbyAuthor} className="selectBox text-center">
+              <option value="">Filter by Author</option>
+              <option value="">All</option>
+              <option value="Harper Lee">Harper Lee</option>
+              <option value="J. K. Rowling">J. K. Rowling</option>
+            </select>
           </div>
         </div>
 
         <div className="col-lg-3 col-md-3 col-mb-3">
+          <div className="selectWrapper">
+            <select onChange={filterbyGenre} className="selectBox text-center">
+              <option value="">Filter by Genre</option>
+              <option value="">All</option>
+              <option value="Southern Gothic">Southern Gothic</option>
+              <option value="Fable">Fable</option>
+              <option value="Science fiction">Science fiction</option>
+              <option value="Mythology">Mythology</option>
+              <option value="Tragedy">Tragedy</option>
+              <option value="Fantasy">Fantasy</option>
+            </select>
+          </div>
+        </div>
 
-        <div className="input-group">
+        <div className="col-lg-3 col-md-3 col-mb-3">
+          <div className="input-group">
             <div className="form-outline">
               <div className="row">
                 <div className="col-lg-8">
@@ -156,21 +159,35 @@ const BrowseNovel = () => {
               </div>
             </div>
           </div>
-
-
-
-          
         </div>
       </div>
 
-      <div className="container mb-5">
+      <div className="container-fluid mb-5">
+        <div className="row">
+          <div className="col-md-2">
+            <div className="card">
+              <div className="card-body">
+                <h3>Price Filter</h3>
+                <hr />
+                <Slider
+                  getAriaLabel={() => "Price range"}
+                  value={priceRange}
 
-        <Grid container spacing={6} className="mt-0">
-
-          {displayNovels()}
-        </Grid>
+                  onChange={(e, v) => setPriceRange(v)}
+                  valueLabelDisplay="auto"
+                  min={100}
+                  max={5000}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="col-md-10">
+            <Grid container spacing={6} className="mt-0">
+              {displayNovels()}
+            </Grid>
+          </div>
+        </div>
       </div>
-
 
       <Footer />
     </div>
