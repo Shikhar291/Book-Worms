@@ -1,15 +1,15 @@
-const moongoose=require('../connection');
+const mongoose = require("../connection");
 
-const mySchema=new moongoose.Schema({
-    firstName:String,
-    lastName:String,
-    username:String,
-    password:String,
-    email:String,
-    isAdmin:{type:Boolean,default:false},
-    createdAt:{type:Date,default:new Date()},//createdAt:Date//user defined
+const mySchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  username: String,
+  password: String,
+  email: String,
+  connections: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
+  isAdmin: { type: Boolean, default: false },
+  createdAt: { type: Date, default: new Date() }, //createdAt:Date//user defined
 });
 
-
-const userModel=moongoose.model('users',mySchema);
-module.exports={userModel};
+const userModel = mongoose.model("users", mySchema);
+module.exports = { userModel };

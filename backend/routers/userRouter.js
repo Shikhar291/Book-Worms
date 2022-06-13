@@ -19,6 +19,7 @@ router.post("/verify", (req, res) => {
   let formdata = req.body;
 
   Model.findOne({ email: formdata.email })
+    .populate("connections")
     .then((data) => {
       if (data) {
         console.log("data found");

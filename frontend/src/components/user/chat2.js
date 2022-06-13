@@ -8,15 +8,15 @@ import { useParams } from "react-router-dom";
 const Chat2 = () => {
   const url = app_config.api_url;
   const [socket, setSocket] = useState(io(url, { autoConnect: false }));
-  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')))
-  const [connectedUser, setConnectedUser] = useState(""); 
-  const [status, setStatus] = useState('not connected');
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
+  const [connectedUser, setConnectedUser] = useState("");
+  const [status, setStatus] = useState("not connected");
   const [message, setMessage] = useState("");
-  const {userid} = useParams();
+  const { userid } = useParams();
 
-  const [messageList, setMessageList] = useState([
-  ]);
-  
+  const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
     socket.connect();
@@ -24,15 +24,15 @@ const Chat2 = () => {
     // socket.emit('checkuser', userid);
   }, []);
 
-//   socket.on('isonline', (data) => {
-//     if(data.status === 'online'){
-//       setConnectedUser(data.socketid);
-//       setStatus('Online')
-      
-//     }else if(data.status === 'offline'){
-//       setStatus('Offline')
-//     }
-//   })
+  //   socket.on('isonline', (data) => {
+  //     if(data.status === 'online'){
+  //       setConnectedUser(data.socketid);
+  //       setStatus('Online')
+
+  //     }else if(data.status === 'offline'){
+  //       setStatus('Offline')
+  //     }
+  //   })
 
   // subscribing the event
   socket.on("recmsg", (data) => {
@@ -40,7 +40,21 @@ const Chat2 = () => {
     setMessageList([...messageList, data]);
   });
 
-
+  const showConnections = () => {
+    return (
+      <div className="card">
+        <div className="card-body">
+          <ul className="list-group">
+            {currentUser.connections.map((connection) => (
+              <li className="list-group-item" key={connection._id}>
+                {connection.username}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+  };
 
   const displayMessages = () => {
     return messageList.map((obj) => (
@@ -64,25 +78,30 @@ const Chat2 = () => {
   };
 
   return (
-    <div className="container">
-      <Card className="chat-card">
-        <CardContent>
-          <div className="chat-area">{displayMessages()}</div>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-3">{showConnections()}</div>
+        <div className="col-md-9">
+          <Card className="chat-card">
+            <CardContent>
+              <div className="chat-area">{displayMessages()}</div>
 
-          <div className="input-group">
-            <input
-              className="form-control"
-              placeholder="Type Your Message Here..."
-              onChange={(e) => setMessage(e.target.value)}
-              value={message}
-            />
+              <div className="input-group">
+                <input
+                  className="form-control"
+                  placeholder="Type Your Message Here..."
+                  onChange={(e) => setMessage(e.target.value)}
+                  value={message}
+                />
 
-            <Button variant="contained" onClick={sendMessage}>
-              Send &nbsp; <i className="fas fa-paper-plane"></i>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+                <Button variant="contained" onClick={sendMessage}>
+                  Send &nbsp; <i className="fas fa-paper-plane"></i>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 };
