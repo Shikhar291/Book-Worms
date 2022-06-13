@@ -24,6 +24,9 @@ import AdminAuthorisor from "./components/adminAuth";
 import ViewQuery from "./components/main/viewQuery";
 import ManageQuery from "./components/user/manageQuery";
 import ResetPassword from "./components/main/resetpassword";
+import ManageUser from "./components/admin/manageUser";
+import Dashboard from "./components/admin/dashboard";
+import AdminManageQuery from "./components/admin/manageQuery";
 
 function App() {
   const stripe = loadStripe(
@@ -46,9 +49,12 @@ function App() {
           }
           path="admin"
         >
-          <Route element={<AdminProfile></AdminProfile>} path="profile">
-            {" "}
-          </Route>
+          <Route element={<AdminProfile></AdminProfile>} path="profile" />
+          <Route element={<ManageUser />} path="manageuser" />
+          <Route element={<Dashboard />} path="dashboard" />
+          <Route element={<AdminManageQuery />} path="managequery" />
+
+          
         </Route>
 
         <Route element={<Main></Main>} path="main">
@@ -60,6 +66,7 @@ function App() {
           <Route element={<NovelDetail />} path="noveldetail/:id"></Route>
           <Route element={<ViewQuery />} path="viewquery/:id"></Route>
           <Route element={<ResetPassword></ResetPassword>} path="resetpassword"></Route>
+          
           <Route
             element={
               <Authorisor>
@@ -86,7 +93,10 @@ function App() {
           <Route element={<AddQuery></AddQuery>} path="addquery"></Route>
           <Route element={<Chat></Chat>} path="chat"></Route>
           <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
-          <Route element={<ManageQuery></ManageQuery>} path="managequery"></Route>
+          <Route
+            element={<ManageQuery></ManageQuery>}
+            path="managequery"
+          ></Route>
           <Route
             element={<ManageNovel></ManageNovel>}
             path="managenovel"
