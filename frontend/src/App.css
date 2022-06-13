@@ -95,7 +95,7 @@ font-family: 'EB Garamond', serif;
 }
 
 .selectBox{
-  width:200px;
+  width:160px;
   height:40px;
   border:0px;
   outline:none;
@@ -204,3 +204,11 @@ font-family: 'EB Garamond', serif;
   width: 18px;
   height: 18px;
  }
+
+ .dashboard
+ {
+  background-image: url("https://bookbub-res.cloudinary.com/image/upload/v1570655739/blog/classic-novels-for-adults.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

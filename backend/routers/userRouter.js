@@ -41,6 +41,7 @@ router.post("/verify", (req, res) => {
 });
 
 router.get("/getall", (req, res) => {
+  
   Model.find({})
     .then((data) => {
       console.log("User data saved successfully..");

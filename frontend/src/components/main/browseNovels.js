@@ -22,7 +22,7 @@ const BrowseNovel = () => {
   const [novelArray, setNovelArray] = useState([]);
   const [novelArray2, setNovelArray2] = useState([]);
 
-  const [priceRange, setPriceRange] = useState([100, 1000]);
+  const [priceRange, setPriceRange] = useState([100,500]);
 
   const navigate = useNavigate();
 
@@ -114,20 +114,64 @@ const BrowseNovel = () => {
 
   return (
     <div>
-      <div className="row mt-4 justify-content-end">
+      <div className="row mt-2 justify-content-end">
+        
         <div className="col-lg-3 col-md-3 col-mb-3">
-          <div className="selectWrapper">
-            <select onChange={filterbyAuthor} className="selectBox text-center">
-              <option value="">Filter by Author</option>
-              <option value="">All</option>
-              <option value="Harper Lee">Harper Lee</option>
-              <option value="J. K. Rowling">J. K. Rowling</option>
-            </select>
+          <div className="input-group">
+            <div className="form-outline">
+              <div className="row justify-content-end">
+                
+                <div className="col-lg-11 col-md-6">
+                  <input
+                    className="form-control"
+                    onChange={(e) => setKeyword(e.target.value)}
+                    placeholder="Search By Title"
+                  />
+                </div>
+                <div className="col-lg-1 col-md-6">
+                  <button onClick={filterNovels} className="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="col-lg-3 col-md-3 col-mb-3">
-          <div className="selectWrapper">
+      <div className="container-fluid mb-5 ">
+        <div className="row">
+
+          <div className="col-md-2 mt-5">
+            
+            <div className="card">
+              <div className="card-body">
+                <h4>Price Filter</h4>
+                <hr />
+                <Slider
+                  getAriaLabel={() => "Price range"}
+                  value={priceRange}
+
+                  onChange={(e, v) => setPriceRange(v)}
+                  valueLabelDisplay="auto"
+                  min={100}
+                  max={500}
+                />
+                
+                <div  className="row">
+
+                <Button
+                variant="contained"
+                onClick={filterbyPrice}
+                >Apply</Button>
+                </div>
+
+              </div>
+            </div>
+            
+            <div className="card">
+              <div className="card-body">
+              <div className="selectWrapper">
             <select onChange={filterbyGenre} className="selectBox text-center">
               <option value="">Filter by Genre</option>
               <option value="">All</option>
@@ -139,47 +183,28 @@ const BrowseNovel = () => {
               <option value="Fantasy">Fantasy</option>
             </select>
           </div>
-        </div>
 
-        <div className="col-lg-3 col-md-3 col-mb-3">
-          <div className="input-group">
-            <div className="form-outline">
-              <div className="row">
-                <div className="col-lg-8">
-                  <input
-                    className="form-control"
-                    onChange={(e) => setKeyword(e.target.value)}
-                  />
-                </div>
-                <div className="col-lg-1">
-                  <button onClick={filterNovels} className="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="container-fluid mb-5">
-        <div className="row">
-          <div className="col-md-2">
+            </div>
+
             <div className="card">
               <div className="card-body">
-                <h3>Price Filter</h3>
-                <hr />
-                <Slider
-                  getAriaLabel={() => "Price range"}
-                  value={priceRange}
 
-                  onChange={(e, v) => setPriceRange(v)}
-                  valueLabelDisplay="auto"
-                  min={100}
-                  max={5000}
-                />
+              <div className="selectWrapper">
+            <select onChange={filterbyAuthor} className="selectBox text-center">
+              <option value="">Filter by Author</option>
+              <option value="">All</option>
+              <option value="Harper Lee">Harper Lee</option>
+              <option value="J. K. Rowling">J. K. Rowling</option>
+            </select>
+          </div>
               </div>
+
             </div>
+
+
+
           </div>
           <div className="col-md-10">
             <Grid container spacing={6} className="mt-0">

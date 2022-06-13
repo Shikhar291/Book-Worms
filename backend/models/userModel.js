@@ -10,6 +10,5 @@ const mySchema=new moongoose.Schema({
     createdAt:{type:Date,default:new Date()},//createdAt:Date//user defined
 });
 
-
 const userModel=moongoose.model('users',mySchema);
 module.exports={userModel};

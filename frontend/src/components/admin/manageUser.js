@@ -129,6 +129,8 @@ const ManageUser = () => {
       ));
     }
   };
+
+  
   return (
     <div className="container-fluid full-page">
       <p className="display-4">Manage Users</p>

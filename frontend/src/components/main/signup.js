@@ -24,6 +24,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Signup = () => {
+
   const url = app_config.api_url;
 
   // 1. Create a form object
@@ -176,12 +177,6 @@ const Signup = () => {
                         value={values.password}
                       />
                     </div>
-
-
-                      
-
-                     
-                 
 
                       <Button
                       sx={{ml:20}}

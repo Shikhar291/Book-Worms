@@ -100,6 +100,7 @@ const ResetPassword = () => {
   };
 
   const resetPassword = ({ password }) => {
+
     fetch(url + "/user/update/" + currentUser._id, {
       method: "PUT",
       body: JSON.stringify({ password: password }),
@@ -131,6 +132,8 @@ const ResetPassword = () => {
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Password Confirmation is Required"),
   });
+
+
 
   const showResetForm = () => {
     if (showReset) {
