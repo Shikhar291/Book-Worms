@@ -75,4 +75,16 @@ router.put("/update/:id", (req, res) => {
     });
 });
 
+router.put("/pushupdate/:id", (req, res) => {
+  Model.findByIdAndUpdate(req.params.id, { $push: req.body }, { new: true })
+    .populate("connections")
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = { router };

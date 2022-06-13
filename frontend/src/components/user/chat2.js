@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import app_config from "../../config";
-import { Button, Card, CardContent } from "@mui/material";
+import { Button, Card, CardContent, CardHeader } from "@mui/material";
 import "./chat.css";
 import { useParams } from "react-router-dom";
 
@@ -17,6 +17,7 @@ const Chat2 = () => {
   const { userid } = useParams();
 
   const [messageList, setMessageList] = useState([]);
+  const [selContact, setSelContact] = useState(currentUser.connections[0]);
 
   useEffect(() => {
     socket.connect();
@@ -46,7 +47,11 @@ const Chat2 = () => {
         <div className="card-body">
           <ul className="list-group">
             {currentUser.connections.map((connection) => (
-              <li className="list-group-item" key={connection._id}>
+              <li
+                className="list-group-item"
+                key={connection._id}
+                onClick={(e) => setSelContact(connection)}
+              >
                 {connection.username}
               </li>
             ))}
@@ -83,6 +88,9 @@ const Chat2 = () => {
         <div className="col-md-3">{showConnections()}</div>
         <div className="col-md-9">
           <Card className="chat-card">
+            <CardHeader
+              title={selContact ? selContact.username : "No Contact Selected"}
+            />
             <CardContent>
               <div className="chat-area">{displayMessages()}</div>
 
