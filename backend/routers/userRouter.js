@@ -19,6 +19,7 @@ router.post("/verify", (req, res) => {
   let formdata = req.body;
 
   Model.findOne({ email: formdata.email })
+    .populate("connections")
     .then((data) => {
       if (data) {
         console.log("data found");
@@ -66,6 +67,18 @@ router.get("/getbyemail/:email", (req, res) => {
 
 router.put("/update/:id", (req, res) => {
   Model.findByIdAndUpdate(req.params.id, req.body)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/pushupdate/:id", (req, res) => {
+  Model.findByIdAndUpdate(req.params.id, { $push: req.body }, { new: true })
+    .populate("connections")
     .then((data) => {
       res.status(200).json(data);
     })

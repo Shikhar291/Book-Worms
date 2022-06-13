@@ -34,7 +34,7 @@ const ViewQuery = () => {
   const [loading, setLoading] = useState(true);
 
   const [name, setName] = useState("");
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const queryForm = {
     title: query.title,
     description: query.description,
@@ -63,10 +63,7 @@ const ViewQuery = () => {
     if (!loading)
       return (
         <div>
-          <div
-            className="row  align-items-center"
-            style={{ marginRight: "0" }}
-          >
+          <div className="row  align-items-center" style={{ marginRight: "0" }}>
             <div className="col-lg-6 col-md-6 col-sm-6 col-11 mt-2 m-auto">
               <Card
                 sx={{
@@ -136,7 +133,12 @@ const ViewQuery = () => {
                           multiline
                         ></TextField>
 
-                        <button className="btn btn-primary" onClick={e => navigate('/user/chat' )}>Contact Now</button>
+                        <button
+                          className="btn btn-primary"
+                          onClick={addtoConnection}
+                        >
+                          Contact Now
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -146,6 +148,32 @@ const ViewQuery = () => {
           </div>
         </div>
       );
+  };
+
+  const addtoConnection = () => {
+    if (
+      currentUser.connections.filter((conn) => conn.userId === query.user._id)
+        .length
+    ) {
+      navigate("/user/chat");
+      return;
+    }
+    fetch(url + "/user/pushupdate/" + currentUser._id, {
+      method: "PUT",
+      body: JSON.stringify({
+        connections: query.user._id,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        res.json().then((data) => {
+          sessionStorage.setItem("user", JSON.stringify(data));
+          navigate("/user/chat");
+        });
+      }
+    });
   };
 
   return (

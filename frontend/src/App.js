@@ -25,8 +25,7 @@ import ViewQuery from "./components/main/viewQuery";
 import ManageQuery from "./components/user/manageQuery";
 import ResetPassword from "./components/main/resetpassword";
 import ManageUser from "./components/admin/manageUser";
-import Dashboard from "./components/admin/dashboard";
-import AdminManageQuery from "./components/admin/manageQuery";
+import Chat2 from "./components/user/chat2";
 
 function App() {
   const stripe = loadStripe(
@@ -91,7 +90,7 @@ function App() {
           path="user"
         >
           <Route element={<AddQuery></AddQuery>} path="addquery"></Route>
-          <Route element={<Chat></Chat>} path="chat"></Route>
+          <Route element={<Chat2></Chat2>} path="chat"></Route>
           <Route element={<AddNovel></AddNovel>} path="addnovel"></Route>
           <Route
             element={<ManageQuery></ManageQuery>}
